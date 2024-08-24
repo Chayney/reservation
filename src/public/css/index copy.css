@@ -1,0 +1,277 @@
+body {
+    /* font-family: "Montserrat","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif; */
+    font-family: 'Simonetta', sans-serif,;
+    font-size: 15px;
+    letter-spacing: .05em;
+    color: #333;
+    background-color: #f2f2f2;
+    position: relative;
+  }
+  
+.header {
+    margin-top: -10px;
+    width: 100%;
+    margin-left: -10px;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+/* ハンバーガーメニューのスタイル */
+.nav-humberger {
+    margin-left: 55px;
+    background-color: rgb(53,96,246);
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px -5px;
+}
+
+/* ハンバーガーメニューのアイコンのスタイル */
+/* チェックボックスを非表示にする */
+.drawer_hidden {
+    display: none;
+}
+
+/* ハンバーガーアイコンの設置スペース */
+.drawer_open {
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;/* 重なり順を一番上にする */
+    cursor: pointer;
+    background-color: rgb(53,96,246);
+    border-radius: 5px;
+}
+
+/* ハンバーガーメニューのアイコン */
+.drawer_open span,
+.drawer_open span:before,
+.drawer_open span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background: white;
+    transition: 0.5s;
+    position: absolute;
+}
+
+/* 三本線の一番上の棒の位置調整 */
+.drawer_open span:before {
+    bottom: 8px;
+    width: 10px;
+}
+
+/* 三本線の一番下の棒の位置調整 */
+.drawer_open span:after {
+    top: 8px;
+    width: 5px;
+}
+
+/* アイコンがクリックされたら真ん中の線を透明にする */
+#drawer_input:checked ~ .drawer_open span {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+/* アイコンがクリックされたらアイコンが×印になるように上下の線を回転 */
+#drawer_input:checked ~ .drawer_open span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+    width: 25px;
+}
+
+#drawer_input:checked ~ .drawer_open span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    width: 25px;
+}
+
+/* メニューのデザイン*/
+.nav_content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%; /* メニューを画面の外に飛ばす */
+    z-index: 99;
+    background: #fff;
+    transition: .5s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 50px;
+}
+
+/* メニューの箇条書き(黒丸)を消す */
+.nav_list {
+    list-style: none;
+    margin-top: -150px;
+}
+
+/* アイコンがクリックされたらメニューを表示 */
+#drawer_input:checked ~ .nav_content {
+    left: 0;/* メニューを画面に入れる */
+}
+
+.nav_list a {
+    text-decoration: none;
+    color: rgb(53,96,246);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+.header__logo {
+    color: rgb(53,96,246);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 40px;
+    margin-right: 405px;
+}
+
+.nav {
+    margin: 0 37px;
+    width: 45%;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 5px 5px 8px -5px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin-left: -20px;
+}
+
+.nav-item {
+    display: flex;
+    position: relative;
+    height: 30px;
+}
+
+.nav-item > label::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 75px;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 15px solid #efefef;
+    border-bottom: 0;
+    pointer-events: none;
+}
+
+.select_box {
+    margin-top: 1px;
+}
+
+select {
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    width: 100px;
+    padding-left: 7px;
+    height: 30px;
+    font-weight: bold;
+    border-right: solid 3px;
+    border-color: #efefef;
+}
+
+.search_box {
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+}
+
+.nav-item img {
+    background-color: #f2f2f2;
+    height: 25px;
+    margin-left: 5px;
+}
+  
+.nav-item input {
+    padding: 1px 0 1px 1em; /* アイコンを設置するため左の余白を多めに指定*/
+    border: none;
+    outline: none;
+    font-weight: bold;
+    width: 330px;
+}
+
+.parent__container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.child__container {
+    background: white;
+    height: 250px;
+    width: 20%;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 5px 5px 8px -5px;
+    position: relative;
+    z-index: 10;
+}
+
+.child__container button {
+    border: none;
+    outline: none;
+    margin: 50px auto;
+    font-size: 15px;
+    background-color: rgb(53,96,246);
+    color: white;
+    border-radius: 10px;
+    padding: 8px 15px;
+    position: absolute;
+    top: 180px;
+    z-index: 11;
+}
+
+.child__container > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+    z-index: 11;
+}
+
+.shop {
+    position: absolute;
+    top: 170px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 11;
+}
+
+.area {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    font-size: 13px;
+    z-index: 11;
+}
+
+.genre {
+    position: absolute;
+    top: 200px;
+    left: 75px;
+    font-size: 13px;
+    z-index: 11;
+}
