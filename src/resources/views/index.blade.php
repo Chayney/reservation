@@ -47,7 +47,7 @@
           <form action="/search" method="get">
             <li class="nav-item">
               <label class="select_box">
-              <select onchange="submit(this.form)" name="area_id">
+              <select onchange="submit(this.form)" type="hidden" name="area_id">
                 <option value="">All area</option>
                 @foreach ($areas as $area)
                   <option value="{{ $area['id'] }}" {{ request()->area_id == $area['id'] ? 'selected' : '' }}>{{ $area['name'] }}</option>
@@ -81,6 +81,7 @@
 
   <main>
     <div class="parent__container">
+      {{-- <?php dd($shops) ?> --}}
       @foreach ($shops as $shop)
         <div class="child__container">
           <img class="shop_image" src="{{ $shop['shop_image'] }}">

@@ -15,17 +15,23 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
+
         $shops = Shop::with('area', 'genre')->get();
 
         $areas = Area::all();
 
         $genres = Genre::all();
 
-        return view('index', compact('shops', 'areas', 'genres'));
+        $favorites = $user->favorite()->pluck('shop_id')->toArray();
+
+        return view('index', compact('shops', 'areas', 'genres', 'favorites'));
     }
 
     public function search(Request $request)
     {
+        $user = Auth::user();
+        
         $shops = Shop::with('area', 'genre')
                ->AreaSearch($request->area_id)
                ->GenreSearch($request->genre_id)
@@ -35,7 +41,9 @@ class ShopController extends Controller
 
         $genres = Genre::all();
 
-        return view('index', compact('shops', 'areas', 'genres'));
+        $favorites = $user->favorite()->pluck('shop_id')->toArray();
+
+        return view('index', compact('shops', 'areas', 'genres', 'favorites'));
     }
 
     public function detail(Request $request)
@@ -46,21 +54,4 @@ class ShopController extends Controller
 
         return view('shop', compact('shops', 'reserve'));
     }
-
-    public function store(Request $request)
-    {
-        $reserve = $request->only(['shop', 'date', 'time', 'number']);
-
-        $shopName = $request->input('shop');
-
-        Reservation::create($reserve);
-
-        return view('done');
-    }
-
-    public function doneview()
-    {
-        return view('done');
-    }
-
 }

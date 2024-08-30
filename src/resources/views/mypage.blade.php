@@ -50,6 +50,38 @@
       <div class="parent__container-left">
         <h2>予約状況</h2>
         <div class="child__container-left">
+          <form action="/mypage/destroy" method="post">
+            @csrf
+            @method('DELETE')
+          @foreach ($reservates as $reservate)
+          <table class="reservation__table">
+            <tr>
+                <th class="table__header">●</th>
+                <td class="table__item">予約{{ $loop->iteration }}</td>
+                <td class="table__item">
+                  <button class="reserve_delete" type="submit" name="" value="">×</button>
+                </td>
+            </tr>
+            <tr>
+                <th class="table__header">Shop</th>
+                <td class="table__item">{{ $reservate['reserve_shop']['shop'] }}</td>
+            </tr>
+            <tr>
+                <th class="table__header">Date</th>
+                <td class="table__item">{{ $reservate['date'] }}</td>
+                </td>
+            </tr>
+            <tr>
+                <th class="table__header">Time</th>
+                <td class="table__item">{{ $reservate['booktime'] }}</td>
+            </tr>
+            <tr>
+                <th class="table__header">Number</th>
+                <td class="table__item">{{ $reservate['person'] }}</td>
+            </tr>
+          </table>
+          @endforeach
+          </form>
         </div>
       </div>
       <div class="parent__container-right">
@@ -68,10 +100,14 @@
             <form action="/detail/{{ $favoriteShop['id'] }}" method="get">
               <button class="detail" type="submit" name="shop" value="{{ $favoriteShop['shop'] }}">詳しくみる</button>
             </form>
+            <form action="/favoriteshop/destroy" method="post">
+              @csrf
+              @method('DELETE')
             <input type="hidden" name="shop_id" value="{{ $favoriteShop['id'] }}">
             <button class="favorite" type="submit">
               <img src="{{ asset('image/heart_red.png') }}">
             </button>
+            </form>
           </div>
           @endforeach    
       </div>

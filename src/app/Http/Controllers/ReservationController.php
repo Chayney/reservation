@@ -17,12 +17,23 @@ class ReservationController extends Controller
     {
         $user = Auth::user();
 
+        $reservates = Reservation::where('user_id', $user->id)->with('reserve_shop')->get();
+
         // ログインユーザーのお気に入り店舗idを配列にする
         $favorites = $user->favorite()->pluck('shop_id')->toArray();
 
-        $favoriteShops = Shop::with(['area', 'genre'])->whereIn('id', $favorites)->get();
+        $favoriteShops = Shop::whereIn('id', $favorites)->get();
         
-        return view('mypage', compact('favoriteShops'));
+        return view('mypage', compact('reservates', 'favoriteShops'));
+    }
+
+    public function delete(Request $request)
+    {
+        $user = Auth::user();
+
+        Reservation::where('user_id', $user->id)->delete();
+
+        return redirect()->back();
     }
 
     public function store(Request $request)
@@ -40,5 +51,16 @@ class ReservationController extends Controller
         ]);
 
         return view('done');
+    }
+
+    public function destroy(Request $request)
+    {
+        $user = Auth::user();
+
+        $shop_id = $request->shop_id;
+
+        Favorite::where('user_id', $user->id)->where('shop_id', $shop_id)->delete();
+
+        return redirect()->back();
     }
 }

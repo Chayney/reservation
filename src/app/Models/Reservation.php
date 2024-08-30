@@ -25,6 +25,6 @@ class Reservation extends Model
 
     public function reserve_shop()
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(Shop::class, 'shop_id');
     }
 }

@@ -1,5 +1,4 @@
 body {
-    /* font-family: "Montserrat","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif; */
     font-family: 'Simonetta', sans-serif,;
     font-size: 15px;
     letter-spacing: .05em;
@@ -21,7 +20,7 @@ body {
 }
 
 .header__logo {
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 /* ハンバーガーメニューのスタイル */
@@ -170,7 +169,19 @@ body {
     margin: 0 auto;
     width: 70%;
     height: 300px;
-    border: 1px solid;
+}
+
+.reservation__table {
+    width: 100%;
+    margin-bottom: 50px;
+    background-color: rgb(53,96,246);
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px -5px;
+    color: white;
+}
+
+.table__header {
+    padding: 10px;
 }
 
 .parent__container-left h2 {
@@ -193,7 +204,7 @@ body {
     width: 100%;
 }
 
-.child__container-right button {
+.detail {
     border: none;
     outline: none;
     margin: 220px auto;
@@ -243,9 +254,14 @@ body {
 .favorite img {
     position: absolute;
     top: 235px;
-    left: 240px;
+    left: 270px;
     width: 15%;
     height: 50px;
     object-fit: cover;
     z-index: 11;
+}
+
+.favorite {
+    border: none;
+    outline: none;
 }

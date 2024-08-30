@@ -34,8 +34,10 @@ Route::middleware('auth')->group(function () {
     // ReservationController
     // 店舗詳細、マイページ
     Route::get('/mypage', [ReservationController::class, 'index']);
+    Route::delete('/mypage/destroy', [ReservationController::class, 'delete']);
     Route::get('/confirm', [ReservationController::class, 'confirm']);
     Route::post('/done', [ReservationController::class, 'store']);
+    Route::delete('/favoriteshop/destroy', [ReservationController::class, 'destroy']);
 
     // FavoriteController
     // 店舗一覧でのお気に入り追加と削除

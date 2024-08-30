@@ -33,9 +33,14 @@ class Shop extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function favorite()
+    public function favorites()
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function reservates()
+    {
+        return $this->hasMany(Reservation::class);
     }
 
     public function scopeAreaSearch($query, $area_id)
@@ -72,12 +77,12 @@ class Shop extends Model
     public function favoritemarked()
     {
         $id = Auth::id();
-        $favoritemarkers = array();
-        foreach ($this->favorite as $favoritemark) {
-            array_push($favoritemarkers, $favoritemark->user_id);
+        $favoritemarkers = array(); //配列を用意
+        foreach ($this->favorites as $favoritemark) { //配列に要素を追加
+            array_push($favoritemarkers, $favoritemark->user_id); //第一引数が配列の箱
         }
-
-        if (in_array($id, $favoritemarkers)) {
+        
+        if (in_array($id, $favoritemarkers)) { //配列の中に探したい値(第一引数)があるかみる
             return true;
         } else {
             return false;

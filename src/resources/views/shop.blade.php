@@ -49,10 +49,10 @@
 
       <div class="left-content">
         @foreach ($shops as $shop)
-          <button type="submit" name="shop" value="{{ $shop['shop'] }}">&lt;</button><span> {{ $shop['shop'] }}</span>
-          <img src="{{ $shop['shop_image'] }}">
+          <a class="home" href="{{ url('/') }}">&lt;</a><span class="shop_name"> {{ $shop['shop'] }}</span>
+          <img src="{{ $shop['shop_image'] }}"><br><br>
           <span class="area">#{{ $shop['area']['name'] }}</span>
-          <span class="genre">#{{ $shop['genre']['name'] }}</span>
+          <span class="genre">#{{ $shop['genre']['name'] }}</span><br><br>
           <span class="shop_detail">{{ $shop['shop_detail'] }}</span>
         @endforeach
       </div>
@@ -63,14 +63,14 @@
         <h1>予約</h1>
         <form action="/done" method="post">
           @csrf
-          <input type="date" id="date" onchange="updateDate()" name="date" value="{{ request()->is('*edit*') ? $reservate->date : '' }}">
-          <select id="time" onchange="updateTime()" name="time">
+          <input type="date" class="select_form_date" id="date" onchange="updateDate()" name="date" value="{{ request()->is('*edit*') ? $reservate->date : '' }}">
+          <select id="time" class="select_form" onchange="updateTime()" name="time">
             <option disabled selected>時間を選択してください</option>
             @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
               <option>{{ $time }}</option>
             @endforeach
           </select>
-          <select id="person" onchange="updatePerson()" name="person">
+          <select id="person" class="select_form" onchange="updatePerson()" name="person">
             <option disabled selected>人数を選択してください</option>
             @foreach (['1人', '2人', '3人', '4人', '5人以上'] as $person)
               <option>{{ $person }}</option>
@@ -100,31 +100,12 @@
                 </tr>
             </table>
           </div>
-          <input type="submit" value="予約する">
+          <input type="submit" class="reserve_button" value="予約する">
         </form>
         
       </div>
     </div> 
   </div>
-
-  <script>
-
-    function updateDate() {
-      var selectedDate = document.getElementById('date').value;
-      document.getElementById('selectedDate').innerText = selectedDate;
-    }
-
-    function updateTime() {
-      var selectedTime = document.getElementById('time').value;
-      document.getElementById('selectedTime').innerText = selectedTime;
-    }
-
-    function updatePerson() {
-      var selectedPerson = document.getElementById('person').value;
-      document.getElementById('selectedPerson').innerText = selectedPerson;
-    }
-    
-  </script>
-  
+  <script src="{{ asset('js/shop.js') }}"> </script>
 </body>
 </html>
