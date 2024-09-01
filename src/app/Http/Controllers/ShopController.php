@@ -17,33 +17,47 @@ class ShopController extends Controller
     {
         $user = Auth::user();
 
-        $shops = Shop::with('area', 'genre')->get();
+        $areas = Shop::select('area')->distinct()->get();
+        $selectedArea = $request->input('area');
+        $area = Shop::when($selectedArea, function($query, $selectedArea) {
+            return $query->where('area', $selectedArea);
+        })->get();
 
-        $areas = Area::all();
+        $genres = Shop::select('genre')->distinct()->get();
+        $selectedGenre = $request->input('genre');
+        $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
+            return $query->where('genre', $selectedGenre);
+        })->get();
 
-        $genres = Genre::all();
-
+        $shops = Shop::all();
         $favorites = $user->favorite()->pluck('shop_id')->toArray();
 
-        return view('index', compact('shops', 'areas', 'genres', 'favorites'));
+        return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
     }
 
     public function search(Request $request)
     {
         $user = Auth::user();
-        
-        $shops = Shop::with('area', 'genre')
-               ->AreaSearch($request->area_id)
-               ->GenreSearch($request->genre_id)
-               ->KeywordSearch($request->keyword)->get();
-        
-        $areas = Area::all();
 
-        $genres = Genre::all();
+        $areas = Shop::select('area')->distinct()->get();
+        $selectedArea = $request->input('area');
+        $area = Shop::when($selectedArea, function($query, $selectedArea) {
+            return $query->where('area', $selectedArea);
+        })->get();
+
+        $genres = Shop::select('genre')->distinct()->get();
+        $selectedGenre = $request->input('genre');
+        $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
+            return $query->where('genre', $selectedGenre);
+        })->get();
+        
+        $shops = Shop::AreaSearch($request->area)
+               ->GenreSearch($request->genre)
+               ->KeywordSearch($request->keyword)->get();
 
         $favorites = $user->favorite()->pluck('shop_id')->toArray();
 
-        return view('index', compact('shops', 'areas', 'genres', 'favorites'));
+        return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
     }
 
     public function detail(Request $request)

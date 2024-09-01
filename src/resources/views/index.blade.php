@@ -47,10 +47,10 @@
           <form action="/search" method="get">
             <li class="nav-item">
               <label class="select_box">
-              <select onchange="submit(this.form)" type="hidden" name="area_id">
+              <select onchange="submit(this.form)" name="area">
                 <option value="">All area</option>
                 @foreach ($areas as $area)
-                  <option value="{{ $area['id'] }}" {{ request()->area_id == $area['id'] ? 'selected' : '' }}>{{ $area['name'] }}</option>
+                  <option value="{{ $area['area'] }}" {{ $selectedArea == $area['area'] ? 'selected' : '' }}>{{ $area['area'] }}</option>
                 @endforeach
               </select>
               </label>
@@ -59,10 +59,10 @@
           <form action="/search" method="get">
             <li class="nav-item">
               <label>
-              <select onchange="submit(this.form)" name="genre_id">
+              <select onchange="submit(this.form)" name="genre">
                 <option value="">All genre</option>
                 @foreach ($genres as $genre)
-                  <option value="{{ $genre['id'] }}" {{ request()->genre_id == $genre['id'] ? 'selected' : '' }}>{{ $genre['name'] }}</option>
+                  <option value="{{ $genre['genre'] }}" {{ $selectedGenre == $genre['genre'] ? 'selected' : '' }}>{{ $genre['genre'] }}</option>
                 @endforeach
               </select>
               </label>
@@ -86,8 +86,8 @@
         <div class="child__container">
           <img class="shop_image" src="{{ $shop['shop_image'] }}">
           <span class="shop">{{ $shop['shop'] }}</span>
-          <span class="area">#{{ $shop['area']['name'] }}</span>
-          <span class="genre">#{{ $shop['genre']['name'] }}</span>
+          <span class="area">#{{ $shop['area'] }}</span>
+          <span class="genre">#{{ $shop['genre'] }}</span>
           <form action="/detail/{{ $shop['id'] }}" method="get">
             <button class="detail" type="submit" name="shop" value="{{ $shop['shop'] }}">詳しくみる</button>
           </form>

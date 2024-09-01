@@ -11,22 +11,22 @@ class Shop extends Model
     use HasFactory;
 
     protected $fillable = [
-        'area_id',
-        'genre_id',
         'shop',
+        'area',
+        'genre',
         'shop_detail',
         'shop_image'
     ];
 
-    public function area()
-    {
-        return $this->belongsTo(Area::class);
-    }
+    // public function area()
+    // {
+    //     return $this->belongsTo(Area::class);
+    // }
 
-    public function genre()
-    {
-        return $this->belongsTo(Genre::class);
-    }
+    // public function genre()
+    // {
+    //     return $this->belongsTo(Genre::class);
+    // }
 
     public function user()
     {
@@ -43,33 +43,27 @@ class Shop extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function scopeAreaSearch($query, $area_id)
+    public function scopeAreaSearch($query, $area)
     {
-        if (!empty($area_id)) {
-            $query->where('area_id', $area_id);
+        if (!empty($area)) {
+            $query->where('area', $area);
         }
     }
 
-    public function scopeGenreSearch($query, $genre_id)
+    public function scopeGenreSearch($query, $genre)
     {
-        if (!empty($genre_id)) {
-            $query->where('genre_id', $genre_id);
+        if (!empty($genre)) {
+            $query->where('genre', $genre);
         }
     }
 
     public function scopeKeywordSearch($query, $keyword)
     {
-        $query->join('areas', function ($query) use ($keyword) {
-            $query->on('shops.area_id', '=', 'areas.id');
-        })->join('genres', function ($query) use ($keyword) {
-            $query->on('shops.genre_id', '=', 'genres.id');
-        })->get();
-        
         if (!empty($keyword)) {
             $query->where(function ($query) use ($keyword) {
               $query->where("shop", "like", "%" . $keyword . "%")
-                ->orWhere("areas.name", "like", "%" . $keyword . "%")
-                ->orWhere("genres.name", "like", "%" . $keyword . "%");
+                ->orWhere("area", "like", "%" . $keyword . "%")
+                ->orWhere("genre", "like", "%" . $keyword . "%");
             });
         }
     }
