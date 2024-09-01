@@ -18,16 +18,6 @@ class Shop extends Model
         'shop_image'
     ];
 
-    // public function area()
-    // {
-    //     return $this->belongsTo(Area::class);
-    // }
-
-    // public function genre()
-    // {
-    //     return $this->belongsTo(Genre::class);
-    // }
-
     public function user()
     {
         return $this->belongsTo(User::class);
