@@ -95,8 +95,8 @@
           <div class="child__container-right">
             <img class="shop_image" src="{{ $favoriteShop['shop_image'] }}">
             <span class="shop">{{ $favoriteShop['shop'] }}</span>
-            <span class="area">#{{ $favoriteShop['area']['name'] }}</span>
-            <span class="genre">#{{ $favoriteShop['genre']['name'] }}</span>
+            <span class="area">#{{ $favoriteShop['area'] }}</span>
+            <span class="genre">#{{ $favoriteShop['genre'] }}</span>
             <form action="/detail/{{ $favoriteShop['id'] }}" method="get">
               <button class="detail" type="submit" name="shop" value="{{ $favoriteShop['shop'] }}">詳しくみる</button>
             </form>
