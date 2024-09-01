@@ -62,7 +62,7 @@ class ShopController extends Controller
 
     public function detail(Request $request)
     {
-        $shops = Shop::with('area', 'genre')->where('shop', $request->shop)->get();
+        $shops = Shop::where('shop', $request->shop)->get();
 
         $reserve = $request->only(['shop', 'date', 'time', 'number']);
 
