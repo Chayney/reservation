@@ -265,3 +265,9 @@ body {
     border: none;
     outline: none;
 }
+
+.clock_image {
+    width: 25%;
+    height: 39px;
+    object-fit: cover;
+}
