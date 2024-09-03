@@ -59,7 +59,7 @@
                 <th class="table__header"><img class="clock_image" src="{{ asset('image/clock.png') }}"></th>
                 <td class="table__item">予約{{ $loop->iteration }}</td>
                 <td class="table__item">
-                  <button class="reserve_delete" type="submit" name="" value="">×</button>
+                  <button class="reserve_delete" type="submit"><img class="batsu_image" src="{{ asset('image/batsu.png') }}"></button>
                 </td>
             </tr>
             <tr>

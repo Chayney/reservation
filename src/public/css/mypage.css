@@ -267,7 +267,21 @@ body {
 }
 
 .clock_image {
-    width: 25%;
+    width: 27%;
     height: 39px;
     object-fit: cover;
+}
+
+.batsu_image {
+    width: 42%;
+    height: 25px;
+    object-fit: cover;
+    background-color: rgb(53,96,246);
+}
+
+.reserve_delete {
+    border: none;
+    outline: none;
+    background-color: rgb(53,96,246);
+    width: 100%;
 }
