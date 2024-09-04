@@ -27,12 +27,12 @@ class ReservationController extends Controller
         return view('mypage', compact('reservates', 'favoriteShops'));
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, Reservation $reservates)
     {
         $user = Auth::user();
-
-        Reservation::where('user_id', $user->id)->delete();
-
+        $shop_id = $reservates->pluck('shop_id');
+        $reserve = Reservation::where('user_id', $user->id)->where('shop_id', $shop_id)->delete();
+        
         return redirect()->back();
     }
 
@@ -46,7 +46,7 @@ class ReservationController extends Controller
             'user_id' => $user->id,
             'shop_id' => $request->shop_id,
             'date' => $request->input('date'),
-            'booktime' => $request->input('time'),
+            'bookTime' => $request->input('time'),
             'person' => $request->input('person')
         ]);
 
