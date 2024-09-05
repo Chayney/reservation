@@ -64,19 +64,22 @@
         <form action="/done" method="post">
           @csrf
           <input type="date" class="select_form_date" id="date" onchange="updateDate()" name="date" value="{{ request()->is('*edit*') ? $reservate->date : '' }}">
+          <label class="select_form_time">
           <select id="time" class="select_form" onchange="updateTime()" name="time">
             <option disabled selected>時間を選択してください</option>
             @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
               <option>{{ $time }}</option>
             @endforeach
           </select>
+          </label>
+          <label class="select_form_person">
           <select id="person" class="select_form" onchange="updatePerson()" name="person">
             <option disabled selected>人数を選択してください</option>
             @foreach (['1人', '2人', '3人', '4人', '5人以上'] as $person)
               <option>{{ $person }}</option>
             @endforeach
           </select>
-        
+          </label>    
           
           <div class="reservation__group">
             <table class="reservation__table">

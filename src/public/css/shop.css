@@ -184,6 +184,7 @@ label {
     margin-top: 20px;
     padding: 20px;
     color: white;
+    position: relative;
 }
 
 form > button {
@@ -239,7 +240,11 @@ select {
 .select_form {
     height: 30px;
     border-radius: 5px;
+    padding-left: 10px;
     border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
 }
 
 .select_form_date {
@@ -247,4 +252,32 @@ select {
     width: 40%;
     border-radius: 5px;
     border: none;
+}
+
+.select_form_time::after {
+    content: "";
+    position: absolute;
+    top: 162px;
+    left: 545px;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 15px solid #efefef;
+    border-bottom: 0;
+    pointer-events: none;
+}
+
+.select_form_person::after {
+    content: "";
+    position: absolute;
+    top: 215px;
+    left: 545px;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 15px solid #efefef;
+    border-bottom: 0;
+    pointer-events: none;
+}
+
+.table__item {
+    padding-left: 50px;
 }
