@@ -24,9 +24,14 @@
         <!-- メニュー -->
         <nav class="nav_content">
             <ul class="nav_list">
-                <li class="nav_item"><a href="">Home</a></li>
-                <li class="nav_item"><a href="">Registration</a></li>
-                <li class="nav_item"><a href="">Login</a></li>
+              <li class="nav_item"><a href="/">Home</a></li>
+              @if (Request::is('register'))
+                <li class="nav_item"><a href="{{ url('login') }}">Login</a></li>
+                <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
+              @else
+                <li class="nav_item"><a href="{{ url('register') }}">Registration</a></li>
+                <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
+              @endif
             </ul>
         </nav>
         </div>
