@@ -20,7 +20,6 @@ body {
     padding: 20px 40px;
 }
 
-/* ハンバーガーメニューのスタイル */
 .nav-humberger {
     margin-left: 55px;
     background-color: rgb(53,96,246);
@@ -28,13 +27,10 @@ body {
     box-shadow: 5px 5px 8px -5px;
 }
 
-/* ハンバーガーメニューのアイコンのスタイル */
-/* チェックボックスを非表示にする */
 .drawer_hidden {
     display: none;
 }
 
-/* ハンバーガーアイコンの設置スペース */
 .drawer_open {
     display: flex;
     height: 60px;
@@ -42,13 +38,12 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 100;/* 重なり順を一番上にする */
+    z-index: 100;
     cursor: pointer;
     background-color: rgb(53,96,246);
     border-radius: 5px;
 }
 
-/* ハンバーガーメニューのアイコン */
 .drawer_open span,
 .drawer_open span:before,
 .drawer_open span:after {
@@ -62,24 +57,20 @@ body {
     position: absolute;
 }
 
-/* 三本線の一番上の棒の位置調整 */
 .drawer_open span:before {
     bottom: 8px;
     width: 10px;
 }
 
-/* 三本線の一番下の棒の位置調整 */
 .drawer_open span:after {
     top: 8px;
     width: 5px;
 }
 
-/* アイコンがクリックされたら真ん中の線を透明にする */
 #drawer_input:checked ~ .drawer_open span {
     background-color: rgba(255, 255, 255, 0);
 }
 
-/* アイコンがクリックされたらアイコンが×印になるように上下の線を回転 */
 #drawer_input:checked ~ .drawer_open span::before {
     bottom: 0;
     transform: rotate(45deg);
@@ -92,7 +83,6 @@ body {
     width: 25px;
 }
 
-/* メニューのデザイン*/
 .nav_content {
     width: 100%;
     height: 100%;
@@ -109,15 +99,13 @@ body {
     line-height: 50px;
 }
 
-/* メニューの箇条書き(黒丸)を消す */
 .nav_list {
     list-style: none;
     margin-top: -150px;
 }
 
-/* アイコンがクリックされたらメニューを表示 */
 #drawer_input:checked ~ .nav_content {
-    left: 0;/* メニューを画面に入れる */
+    left: 0;
 }
 
 .nav_list a {
@@ -126,7 +114,6 @@ body {
     font-weight: bold;
     font-size: 25px;
 }
-
 
 .header__logo {
     color: rgb(53,96,246);
@@ -181,7 +168,7 @@ body {
     margin-top: 1px;
 }
 
-select {
+.select_form {
     border: none;
     outline: none;
     appearance: none;
@@ -200,6 +187,10 @@ select {
     font-size: 20px;
 }
 
+.search-list {
+    display: flex;
+}
+
 .nav-item img {
     background-color: #f2f2f2;
     height: 25px;
@@ -207,7 +198,7 @@ select {
 }
   
 .nav-item input {
-    padding: 1px 0 1px 1em; /* アイコンを設置するため左の余白を多めに指定*/
+    padding: 1px 0 1px 1em;
     border: none;
     outline: none;
     font-weight: bold;

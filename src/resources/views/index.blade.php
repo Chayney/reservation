@@ -38,10 +38,10 @@
       </a>
       <nav class="nav">
         <ul class="nav-list">
-          <form action="/search" method="get">
+          <form class="search-list" action="/search" method="get">
             <li class="nav-item">
               <label class="select_box">
-              <select onchange="submit(this.form)" name="area">
+              <select class="select_form" onchange="submit(this.form)" name="area">
                 <option value="">All area</option>
                 @foreach ($areas as $area)
                   <option value="{{ $area['area'] }}" {{ $selectedArea == $area['area'] ? 'selected' : '' }}>{{ $area['area'] }}</option>
@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item">
               <label>
-              <select onchange="submit(this.form)" name="genre">
+              <select class="select_form" onchange="submit(this.form)" name="genre">
                 <option value="">All genre</option>
                 @foreach ($genres as $genre)
                   <option value="{{ $genre['genre'] }}" {{ $selectedGenre == $genre['genre'] ? 'selected' : '' }}>{{ $genre['genre'] }}</option>
