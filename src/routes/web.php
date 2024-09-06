@@ -20,26 +20,19 @@ use App\Http\Controllers\RegisterController;
 // 会員登録後に遷移する
 Route::get('/thanks', [RegisterController::class, 'thanks']);
 
-// Route::middleware('guest')->group(function () {
-//     Route::get('/', [ShopController::class, 'index']);
-// });
+// 店舗一覧
+Route::get('/', [ShopController::class, 'index']);
+Route::get('/search', [ShopController::class, 'search']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
 Route::middleware('auth')->group(function () {
-    // ShopController
-    // 店舗一覧
-    Route::get('/', [ShopController::class, 'index']);
-    Route::get('/search', [ShopController::class, 'search']);
-    Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
-
-    // ReservationController
-    // 店舗詳細、マイページ
+    // マイページ、店舗予約
     Route::get('/mypage', [ReservationController::class, 'index']);
     Route::delete('/mypage/destroy', [ReservationController::class, 'delete']);
     Route::get('/confirm', [ReservationController::class, 'confirm']);
     Route::post('/done', [ReservationController::class, 'store']);
     Route::delete('/favoriteshop/destroy', [ReservationController::class, 'destroy']);
 
-    // FavoriteController
     // 店舗一覧でのお気に入り追加と削除
     Route::post('/favorite/store', [FavoriteController::class, 'store']);
     Route::delete('/favorite/destroy{shop}', [FavoriteController::class, 'destroy']);

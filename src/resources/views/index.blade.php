@@ -13,14 +13,8 @@
   <header class="header">
     <div class="header__inner">
         <div class="nav-humberger">
-    
-            <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
-            <input id="drawer_input" class="drawer_hidden" type="checkbox">
-
-            <!-- ハンバーガーアイコン -->
-            <label for="drawer_input" class="drawer_open"><span></span></label>
-
-        <!-- メニュー -->
+          <input id="drawer_input" class="drawer_hidden" type="checkbox">
+          <label for="drawer_input" class="drawer_open"><span></span></label>
         <nav class="nav_content">
             <ul class="nav_list">
                 <li class="nav_item"><a href="/">Home</a></li>
@@ -33,8 +27,8 @@
                   </li>
                   <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
                 @else
-                  <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
-                  <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
+                  <li class="nav_item"><a href="{{ url('register') }}">Registration</a></li>
+                  <li class="nav_item"><a href="{{ url('login') }}">Login</a></li>
                 @endif
             </ul>
         </nav>
@@ -55,8 +49,6 @@
               </select>
               </label>
             </li>
-          </form>
-          <form action="/search" method="get">
             <li class="nav-item">
               <label>
               <select onchange="submit(this.form)" name="genre">
@@ -81,7 +73,6 @@
 
   <main>
     <div class="parent__container">
-      {{-- <?php dd($shops) ?> --}}
       @foreach ($shops as $shop)
         <div class="child__container">
           <img class="shop_image" src="{{ $shop['shop_image'] }}">
@@ -110,6 +101,10 @@
             </button>
             </form>
             @endif
+          @else
+            <button class="favorite" onclick="location.href='/login'">
+              <img src="{{ asset('image/heart_gray.png') }}">
+            </button>
           @endif
         </div>
       @endforeach

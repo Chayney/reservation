@@ -15,49 +15,83 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
-        $user = Auth::user();
-
-        $areas = Shop::select('area')->distinct()->get();
-        $selectedArea = $request->input('area');
-        $area = Shop::when($selectedArea, function($query, $selectedArea) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $favorites = $user->favorite()->pluck('shop_id')->toArray();
+            $areas = Shop::select('area')->distinct()->get();
+            $selectedArea = $request->input('area');
+            $area = Shop::when($selectedArea, function($query, $selectedArea) {
             return $query->where('area', $selectedArea);
-        })->get();
+            })->get();
 
-        $genres = Shop::select('genre')->distinct()->get();
-        $selectedGenre = $request->input('genre');
-        $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
-            return $query->where('genre', $selectedGenre);
-        })->get();
+            $genres = Shop::select('genre')->distinct()->get();
+            $selectedGenre = $request->input('genre');
+            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
+                return $query->where('genre', $selectedGenre);
+            })->get();
+            $shops = Shop::all();
+            return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+            
+        } else {
+            $areas = Shop::select('area')->distinct()->get();
+            $selectedArea = $request->input('area');
+            $area = Shop::when($selectedArea, function($query, $selectedArea) {
+                return $query->where('area', $selectedArea);
+            })->get();
 
-        $shops = Shop::all();
-        $favorites = $user->favorite()->pluck('shop_id')->toArray();
-
-        return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+            $genres = Shop::select('genre')->distinct()->get();
+            $selectedGenre = $request->input('genre');
+            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
+                return $query->where('genre', $selectedGenre);
+            })->get();
+            $shops = Shop::all();
+        
+            return view('index', compact('shops', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+        }
     }
 
     public function search(Request $request)
     {
-        $user = Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $favorites = $user->favorite()->pluck('shop_id')->toArray();
+            $areas = Shop::select('area')->distinct()->get();
+            $selectedArea = $request->input('area');
+            $area = Shop::when($selectedArea, function($query, $selectedArea) {
+                return $query->where('area', $selectedArea);
+            })->get();
 
-        $areas = Shop::select('area')->distinct()->get();
-        $selectedArea = $request->input('area');
-        $area = Shop::when($selectedArea, function($query, $selectedArea) {
-            return $query->where('area', $selectedArea);
-        })->get();
+            $genres = Shop::select('genre')->distinct()->get();
+            $selectedGenre = $request->input('genre');
+            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
+                return $query->where('genre', $selectedGenre);
+            })->get();
+            
+            $shops = Shop::AreaSearch($request->area)
+                ->GenreSearch($request->genre)
+                ->KeywordSearch($request->keyword)->get();
 
-        $genres = Shop::select('genre')->distinct()->get();
-        $selectedGenre = $request->input('genre');
-        $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
-            return $query->where('genre', $selectedGenre);
-        })->get();
+            return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
         
-        $shops = Shop::AreaSearch($request->area)
-               ->GenreSearch($request->genre)
-               ->KeywordSearch($request->keyword)->get();
+        } else {
+            $areas = Shop::select('area')->distinct()->get();
+            $selectedArea = $request->input('area');
+            $area = Shop::when($selectedArea, function($query, $selectedArea) {
+                return $query->where('area', $selectedArea);
+            })->get();
 
-        $favorites = $user->favorite()->pluck('shop_id')->toArray();
+            $genres = Shop::select('genre')->distinct()->get();
+            $selectedGenre = $request->input('genre');
+            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
+                return $query->where('genre', $selectedGenre);
+            })->get();
+            
+            $shops = Shop::AreaSearch($request->area)
+                ->GenreSearch($request->genre)
+                ->KeywordSearch($request->keyword)->get();
 
-        return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+            return view('index', compact('shops', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+        }
     }
 
     public function detail(Request $request)
