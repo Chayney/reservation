@@ -2,10 +2,10 @@ body {
     font-family: 'Simonetta', sans-serif,;
     font-size: 15px;
     letter-spacing: .05em;
-    color: #333;
+    color: black;
     background-color: #f2f2f2;
     position: relative;
-  }
+}
   
 .header {
     margin-top: -10px;
@@ -88,7 +88,7 @@ body {
     height: 100%;
     position: fixed;
     top: 0;
-    left: 100%; /* メニューを画面の外に飛ばす */
+    left: 100%;
     z-index: 99;
     background: #fff;
     transition: .5s;
@@ -283,4 +283,116 @@ body {
     height: 40px;
     object-fit: cover;
     z-index: 11;
+}
+
+/* タブレット・スマホ用 */
+@media screen and (max-width:768px) {
+    .header {
+        margin-left: -50px;
+    }
+
+    .header__inner {
+        width: 100%;
+    }
+
+    .header__logo {
+        margin-left: 10px;
+    }
+
+    .nav {
+        margin-left: -340px;
+        width: 70%;
+    }
+
+    .nav-list {
+        width: 70%;
+    }
+
+    .nav-item input {
+        width: 100px;
+    }
+
+    .select_form {
+        padding-left: 7px;
+        height: 30px;
+    }
+
+    .nav-humberger {
+        margin-left: 58px;
+    }
+
+    .parent__container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .child__container {
+        width: 40%;
+        height: 200px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .shop_image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 10px 10px 0px 0px;
+        z-index: 11;
+    }
+
+    .shop {
+        position: absolute;
+        top: 140px;
+        left: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        z-index: 11;
+    }
+    
+    .area {
+        position: absolute;
+        top: 170px;
+        left: 20px;
+        font-size: 13px;
+        z-index: 11;
+    }
+    
+    .genre {
+        position: absolute;
+        top: 170px;
+        left: 75px;
+        font-size: 13px;
+        z-index: 11;
+    }
+
+    .detail {
+        border: none;
+        outline: none;
+        margin: 50px auto;
+        font-size: 13px;
+        background-color: rgb(53,96,246);
+        color: white;
+        border-radius: 10px;
+        padding: 5px 10px;
+        position: absolute;
+        top: 145px;
+        z-index: 11;
+    }
+    
+    .favorite img {
+        position: absolute;
+        top: 190px;
+        left: 240px;
+        width: 14%;
+        height: 40px;
+        object-fit: cover;
+        z-index: 11;
+    }
 }

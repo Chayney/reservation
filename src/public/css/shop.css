@@ -2,10 +2,10 @@ body {
     font-family: 'Simonetta', sans-serif;
     font-size: 15px;
     letter-spacing: .05em;
-    color: #333;
+    color: black;
     background-color: #f2f2f2;
     position: relative;
-  }
+}
   
 .header {
     margin-top: -10px;
@@ -23,7 +23,6 @@ body {
     margin-left: 40px;
 }
 
-/* ハンバーガーメニューのスタイル */
 .nav-humberger {
     margin-left: 55px;
     background-color: rgb(53,96,246);
@@ -31,13 +30,10 @@ body {
     box-shadow: 5px 5px 8px -5px;
 }
 
-/* ハンバーガーメニューのアイコンのスタイル */
-/* チェックボックスを非表示にする */
 .drawer_hidden {
     display: none;
 }
 
-/* ハンバーガーアイコンの設置スペース */
 .drawer_open {
     display: flex;
     height: 60px;
@@ -45,13 +41,12 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 100;/* 重なり順を一番上にする */
+    z-index: 100;
     cursor: pointer;
     background-color: rgb(53,96,246);
     border-radius: 5px;
 }
 
-/* ハンバーガーメニューのアイコン */
 .drawer_open span,
 .drawer_open span:before,
 .drawer_open span:after {
@@ -65,24 +60,20 @@ body {
     position: absolute;
 }
 
-/* 三本線の一番上の棒の位置調整 */
 .drawer_open span:before {
     bottom: 8px;
     width: 10px;
 }
 
-/* 三本線の一番下の棒の位置調整 */
 .drawer_open span:after {
     top: 8px;
     width: 5px;
 }
 
-/* アイコンがクリックされたら真ん中の線を透明にする */
 #drawer_input:checked ~ .drawer_open span {
     background-color: rgba(255, 255, 255, 0);
 }
 
-/* アイコンがクリックされたらアイコンが×印になるように上下の線を回転 */
 #drawer_input:checked ~ .drawer_open span::before {
     bottom: 0;
     transform: rotate(45deg);
@@ -95,13 +86,12 @@ body {
     width: 25px;
 }
 
-/* メニューのデザイン*/
 .nav_content {
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
-    left: 100%; /* メニューを画面の外に飛ばす */
+    left: 100%;
     z-index: 99;
     background: #fff;
     transition: .5s;
@@ -112,15 +102,13 @@ body {
     line-height: 50px;
 }
 
-/* メニューの箇条書き(黒丸)を消す */
 .nav_list {
     list-style: none;
     margin-top: -150px;
 }
 
-/* アイコンがクリックされたらメニューを表示 */
 #drawer_input:checked ~ .nav_content {
-    left: 0;/* メニューを画面に入れる */
+    left: 0;
 }
 
 .nav_list a {
@@ -129,7 +117,6 @@ body {
     font-weight: bold;
     font-size: 25px;
 }
-
 
 .header__logo {
     color: rgb(53,96,246);
@@ -166,7 +153,7 @@ label {
     width: 70%;
     height: 400px;
     margin: 30px 0px 0px 80px;
-   
+    font-weight: bold;
 }
 
 .left-content > img {
@@ -210,7 +197,7 @@ select {
 .shop_name {
     margin-left: 20px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .reservation__group {
@@ -280,4 +267,77 @@ select {
 
 .table__item {
     padding-left: 50px;
+}
+
+@media screen and (max-width:768px) {
+    .header {
+        margin-left: -50px;
+    }
+
+    .header__inner {
+        width: 100%;
+    }
+
+    .header__logo {
+        margin-left: 10px;
+    }
+
+    .left-content {
+        width: 70%;
+        height: 400px;
+        margin: 30px 0px 0px 50px;
+        font-weight: bold;
+    }
+
+    .reserve_button {
+        background-color: rgb(0, 63, 245);
+        width: 62%;
+        color: white;
+        height: 50px;
+        margin-left: -20px;
+        margin-top: 190px;
+        border-radius: 0px 0px 5px 5px;
+        border: none;
+    }
+    
+    .select_form {
+        height: 30px;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: none;
+        outline: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    
+    .select_form_date {
+        height: 30px;
+        width: 40%;
+        border-radius: 5px;
+        border: none;
+    }
+    
+    .select_form_time::after {
+        content: "";
+        position: absolute;
+        top: 162px;
+        left: 545px;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-top: 15px solid #efefef;
+        border-bottom: 0;
+        pointer-events: none;
+    }
+    
+    .select_form_person::after {
+        content: "";
+        position: absolute;
+        top: 215px;
+        left: 545px;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-top: 15px solid #efefef;
+        border-bottom: 0;
+        pointer-events: none;
+    }
 }
