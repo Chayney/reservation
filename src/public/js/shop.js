@@ -12,3 +12,10 @@ function updatePerson() {
     var selectedPerson = document.getElementById('person').value;
     document.getElementById('selectedPerson').innerText = selectedPerson;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date();
+    today.setDate(today.getDate() + 2);
+    var tomorrow = today.toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', tomorrow);
+});
