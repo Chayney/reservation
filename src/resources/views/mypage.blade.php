@@ -12,33 +12,27 @@
 <body>
   <header class="header">
     <div class="header__inner">
-        <div class="nav-humberger">
-    
-            <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
-            <input id="drawer_input" class="drawer_hidden" type="checkbox">
-
-            <!-- ハンバーガーアイコン -->
-            <label for="drawer_input" class="drawer_open"><span></span></label>
-
-        <!-- メニュー -->
-        <nav class="nav_content">
-            <ul class="nav_list">
-                <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
-                @if (Auth::check())
-                <li class="nav_item">
-                  <form action="/logout" method="post">
-                    @csrf
-                      <button class="logout">Logout</button>
-                  </form>
-                </li>
-                <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
-                @else
-                <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
-                <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
-                @endif
-            </ul>
-        </nav>
-        </div>
+      <div class="nav-humberger">
+        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+      <nav class="nav_content">
+          <ul class="nav_list">
+              <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
+              @if (Auth::check())
+              <li class="nav_item">
+                <form action="/logout" method="post">
+                  @csrf
+                    <button class="logout">Logout</button>
+                </form>
+              </li>
+              <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
+              @else
+              <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
+              <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
+              @endif
+          </ul>
+      </nav>
+      </div>
       <a class="header__logo" href="/">
         Rese
       </a>
@@ -48,7 +42,7 @@
   <main>
     <div class="contact-form__content">
       <div class="parent__container-left">
-        <h2>予約状況</h2>
+        <h2 class="left-title">予約状況</h2>
         <div class="child__container-left">
           <form action="/mypage/destroy" method="post">
             @csrf
@@ -56,28 +50,27 @@
           @foreach ($reservates as $reservate)
           <table class="reservation__table">
             <tr>
-                <th class="table__header"><img class="clock_image" src="{{ asset('image/clock.png') }}"></th>
-                <td class="table__item">予約{{ $loop->iteration }}</td>
-                <td class="table__item">
-                  <button class="reserve_delete" type="submit"><img class="batsu_image" src="{{ asset('image/batsu.png') }}"></button>
-                </td>
+              <th class="table__header"><img class="clock_image" src="{{ asset('image/clock.png') }}"></th>
+              <td class="table__item">予約{{ $loop->iteration }}</td>
+              <td class="table__item">
+                <button class="reserve_delete" type="submit"><img class="batsu_image" src="{{ asset('image/batsu.png') }}"></button>
+              </td>
             </tr>
             <tr>
-                <th class="table__header">Shop</th>
-                <td class="table__item">{{ $reservate['reserve_shop']['shop'] }}</td>
+              <th class="table__header">Shop</th>
+              <td class="table__item">{{ $reservate['reserve_shop']['shop'] }}</td>
             </tr>
             <tr>
-                <th class="table__header">Date</th>
-                <td class="table__item">{{ $reservate['date'] }}</td>
-                </td>
+              <th class="table__header">Date</th>
+              <td class="table__item">{{ $reservate['date'] }}</td>
             </tr>
             <tr>
-                <th class="table__header">Time</th>
-                <td class="table__item">{{ $reservate['bookTime']->format('H:i') }}</td>
+              <th class="table__header">Time</th>
+              <td class="table__item">{{ $reservate['bookTime']->format('H:i') }}</td>
             </tr>
             <tr>
-                <th class="table__header">Number</th>
-                <td class="table__item">{{ $reservate['person'] }}</td>
+              <th class="table__header">Number</th>
+              <td class="table__item">{{ $reservate['person'] }}</td>
             </tr>
           </table>
           @endforeach

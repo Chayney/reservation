@@ -72,3 +72,14 @@
   width: 30px;
   margin-left: 30px;
 }
+
+@media screen and (max-width:768px) {
+  .register__content {
+    width: 50%;
+    height: 280px;
+    margin: 80px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px -5px;
+  }
+}

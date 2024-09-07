@@ -144,10 +144,10 @@ body {
     width: 50%;
 }
 
-label {
+/* label {
     font-size: 30px;
     font-weight: bold;
-}
+} */
 
 .left-content {
     width: 70%;
@@ -172,16 +172,6 @@ label {
     padding: 20px;
     color: white;
     position: relative;
-}
-
-form > button {
-    width: 600px;
-    margin-left: -20px;
-}
-
-select {
-    width: 550px;
-    margin-top: 20px;
 }
 
 .home {
@@ -232,6 +222,8 @@ select {
     outline: none;
     appearance: none;
     cursor: pointer;
+    width: 550px;
+    margin-top: 20px;
 }
 
 .select_form_date {
@@ -289,13 +281,27 @@ select {
         font-weight: bold;
     }
 
+    .child__container-right {
+        display: flex;
+        flex-wrap: wrap;
+        width:40%;
+        height: 620px;
+        background-color: rgb(53,96,246);
+        border-radius: 5px;
+        margin-left: -30px;
+        margin-top: 20px;
+        padding: 20px;
+        color: white;
+        position: relative;
+    }
+
     .reserve_button {
         background-color: rgb(0, 63, 245);
-        width: 62%;
+        width: 113%;
         color: white;
         height: 50px;
         margin-left: -20px;
-        margin-top: 190px;
+        margin-top: 195px;
         border-radius: 0px 0px 5px 5px;
         border: none;
     }
@@ -308,11 +314,12 @@ select {
         outline: none;
         appearance: none;
         cursor: pointer;
+        width: 300px;
     }
     
     .select_form_date {
         height: 30px;
-        width: 40%;
+        width: 70%;
         border-radius: 5px;
         border: none;
     }
@@ -321,7 +328,7 @@ select {
         content: "";
         position: absolute;
         top: 162px;
-        left: 545px;
+        left: 300px;
         border-right: 8px solid transparent;
         border-left: 8px solid transparent;
         border-top: 15px solid #efefef;
@@ -333,7 +340,7 @@ select {
         content: "";
         position: absolute;
         top: 215px;
-        left: 545px;
+        left: 300px;
         border-right: 8px solid transparent;
         border-left: 8px solid transparent;
         border-top: 15px solid #efefef;

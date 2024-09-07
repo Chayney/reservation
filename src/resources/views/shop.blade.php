@@ -14,33 +14,27 @@
     <div class="child__container-left">
       <header class="header">
         <div class="header__inner">
-            <div class="nav-humberger">
-        
-                <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
-                <input id="drawer_input" class="drawer_hidden" type="checkbox">
-
-                <!-- ハンバーガーアイコン -->
-                <label for="drawer_input" class="drawer_open"><span></span></label>
-
-            <!-- メニュー -->
-            <nav class="nav_content">
-                <ul class="nav_list">
-                  <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
-                  @if (Auth::check())
-                  <li class="nav_item">
-                    <form action="/logout" method="post">
-                      @csrf
-                      <button class="logout">Logout</button>
-                    </form>
-                  </li>
-                  <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
-                  @else
-                  <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
-                  <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
-                  @endif
-                </ul>
-            </nav>
-            </div>
+          <div class="nav-humberger">
+            <input id="drawer_input" class="drawer_hidden" type="checkbox">
+            <label for="drawer_input" class="drawer_open"><span></span></label>
+          <nav class="nav_content">
+            <ul class="nav_list">
+              <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
+              @if (Auth::check())
+              <li class="nav_item">
+                <form action="/logout" method="post">
+                  @csrf
+                  <button class="logout">Logout</button>
+                </form>
+              </li>
+              <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
+              @else
+              <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
+              <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
+              @endif
+            </ul>
+          </nav>
+          </div>
           <a class="header__logo" href="/">
             Rese
           </a>

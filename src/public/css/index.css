@@ -1,5 +1,5 @@
 body {
-    font-family: 'Simonetta', sans-serif,;
+    font-family: 'Simonetta', sans-serif;
     font-size: 15px;
     letter-spacing: .05em;
     color: black;
@@ -285,7 +285,6 @@ body {
     z-index: 11;
 }
 
-/* タブレット・スマホ用 */
 @media screen and (max-width:768px) {
     .header {
         margin-left: -50px;
