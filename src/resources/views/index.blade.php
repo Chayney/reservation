@@ -89,7 +89,7 @@
               @method('DELETE')
             <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
             <button class="favorite" type="submit">
-              <img src="{{ asset('image/heart_red.png') }}">
+              <img src="{{ asset('image/red_heart.png') }}">
             </button>
             </form>
             @else
@@ -97,13 +97,13 @@
               @csrf
             <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
             <button class="favorite" type="submit">
-              <img src="{{ asset('image/heart_gray.png') }}">
+              <img src="{{ asset('image/gray_heart.png') }}">
             </button>
             </form>
             @endif
           @else
             <button class="favorite" onclick="location.href='/login'">
-              <img src="{{ asset('image/heart_gray.png') }}">
+              <img src="{{ asset('image/gray_heart.png') }}">
             </button>
           @endif
         </div>

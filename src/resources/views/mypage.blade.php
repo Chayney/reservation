@@ -98,7 +98,7 @@
               @method('DELETE')
             <input type="hidden" name="shop_id" value="{{ $favoriteShop['id'] }}">
             <button class="favorite" type="submit">
-              <img src="{{ asset('image/heart_red.png') }}">
+              <img src="{{ asset('image/red_heart.png') }}">
             </button>
             </form>
           </div>
