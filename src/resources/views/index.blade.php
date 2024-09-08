@@ -62,7 +62,7 @@
           </form>
           <form action="/search" method="get">
             <li class="nav-item">
-              <span class="search_box"><img src="{{ asset('image/glassicon.png') }}"></span>
+              <span class="search_box"><img src="{{ asset('image/magnifying_glass.png') }}"></span>
               <input type="text" name="keyword" placeholder="Search ..." value="{{  request('keyword') }}">
             </li>
           </form>
