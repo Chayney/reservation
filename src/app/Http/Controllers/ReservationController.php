@@ -39,18 +39,22 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+
+        $shop_id = $request->shop_id;
         
-        $reserve = Reservation::where('user_id', $user->id)->first();
+        $reserve = Reservation::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
 
-        $reserve = Reservation::create([
-            'user_id' => $user->id,
-            'shop_id' => $request->shop_id,
-            'date' => $request->input('date'),
-            'book_time' => $request->input('time'),
-            'person' => $request->input('person')
-        ]);
-
-        return view('done');
+        if (empty($reserve)) {
+            $reserve = Reservation::create([
+                'user_id' => $user->id,
+                'shop_id' => $request->shop_id,
+                'date' => $request->input('date'),
+                'book_time' => $request->input('time'),
+                'person' => $request->input('person')
+            ]);
+    
+            return view('done');
+        }
     }
 
     public function destroy(Request $request)
