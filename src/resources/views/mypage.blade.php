@@ -27,8 +27,8 @@
               </li>
               <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
               @else
-              <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
-              <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
+              <li class="nav_item"><a href="{{ url('register') }}">Registration</a></li>
+              <li class="nav_item"><a href="{{ url('login') }}">Login</a></li>
               @endif
           </ul>
       </nav>

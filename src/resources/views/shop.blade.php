@@ -29,8 +29,8 @@
               </li>
               <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
               @else
-              <li class="nav_item"><a href="{{ url('auth.register') }}">Registration</a></li>
-              <li class="nav_item"><a href="{{ url('auth.login') }}">Login</a></li>
+              <li class="nav_item"><a href="{{ url('register') }}">Registration</a></li>
+              <li class="nav_item"><a href="{{ url('login') }}">Login</a></li>
               @endif
             </ul>
           </nav>
@@ -77,32 +77,31 @@
           
           <div class="reservation__group">
             <table class="reservation__table">
-                <tr>
-                    <th class="table__header">Shop</th>
-                    <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
-                    <td class="table__item">{{ $shop['shop'] }}</td>
-                </tr>
-                <tr>
-                    <th class="table__header">Date</th>
-                    <td class="table__item" id="selectedDate" name="date">{{ request()->is('*edit*') ? $reserve['date'] : '' }}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="table__header">Time</th>
-                    <td class="table__item" id="selectedTime" name="time">{{ request()->is('*edit*') ? $reserve['time'] : '' }}
-                </tr>
-                <tr>
-                    <th class="table__header">Number</th>
-                    <td class="table__item" id="selectedPerson" name="person">{{ request()->is('*edit*') ? $reserve['person'] : '' }}
-                </tr>
+              <tr>
+                <th class="table__header">Shop</th>
+                <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
+                <td class="table__item">{{ $shop['shop'] }}</td>
+              </tr>
+              <tr>
+                <th class="table__header">Date</th>
+                <td class="table__item" id="selectedDate" name="date">{{ request()->is('*edit*') ? $reserve['date'] : '' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="table__header">Time</th>
+                <td class="table__item" id="selectedTime" name="time">{{ request()->is('*edit*') ? $reserve['time'] : '' }}
+              </tr>
+              <tr>
+                <th class="table__header">Number</th>
+                <td class="table__item" id="selectedPerson" name="person">{{ request()->is('*edit*') ? $reserve['person'] : '' }}
+              </tr>
             </table>
           </div>
           <input type="submit" class="reserve_button" value="予約する">
         </form>
-        
       </div>
     </div> 
   </div>
-  <script src="{{ asset('js/shop.js') }}"> </script>
+  <script src="{{ asset('js/shop.js') }}"></script>
 </body>
 </html>
