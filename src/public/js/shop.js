@@ -15,7 +15,7 @@ function updatePerson() {
 
 document.addEventListener('DOMContentLoaded', function() {
     var today = new Date();
-    today.setDate(today.getDate() + 2);
+    today.setDate(today.getDate() + 1);
     var tomorrow = today.toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', tomorrow);
 });
