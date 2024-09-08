@@ -24,4 +24,5 @@ class RegisterResponse implements RegisterResponseContract
             ? new JsonResponse('', 201)
             : redirect('thanks');
     }
+    
 }
