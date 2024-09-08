@@ -58,6 +58,11 @@
         <form action="/done" method="post">
           @csrf
           <input type="date" class="select_form_date" id="date" onchange="updateDate()" name="date" value="{{ request()->is('*edit*') ? $reservate->date : '' }}">
+          <div class="error__item">
+            @error('date')
+                <span class="error__message">{{ $message }}</span>
+            @enderror
+          </div>
           <label class="select_form_time">
           <select id="time" class="select_form" onchange="updateTime()" name="time">
             <option disabled selected>時間を選択してください</option>
@@ -66,6 +71,11 @@
             @endforeach
           </select>
           </label>
+          <div class="error__item">
+            @error('book_time')
+                <span class="error__message">{{ $message }}</span>
+            @enderror
+          </div>
           <label class="select_form_person">
           <select id="person" class="select_form" onchange="updatePerson()" name="person">
             <option disabled selected>人数を選択してください</option>
@@ -73,7 +83,12 @@
               <option>{{ $person }}</option>
             @endforeach
           </select>
-          </label>    
+          </label>
+          <div class="error__item">
+            @error('person')
+                <span class="error__message">{{ $message }}</span>
+            @enderror
+          </div>  
           
           <div class="reservation__group">
             <table class="reservation__table">

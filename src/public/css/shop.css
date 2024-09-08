@@ -252,6 +252,12 @@ body {
     pointer-events: none;
 }
 
+.error__item {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 .table__item {
     padding-left: 50px;
 }
