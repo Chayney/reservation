@@ -42,10 +42,18 @@ Laravel学習のまとめとして作成いたしました。提示された要�
 
 
 ## 環境構築
-1. docker-compose up -d -build
-1. docker-compose exec php bash
-2. composer install
-3. .envで環境変数を変更
-4. php artisan key:generate
-5. php artisan migrate
-6. php artisan db:seed
+
+### コマンドライン上
+$docker-compose up -d -build  
+$docker-compose exec php bash
+
+### PHPコンテナ内
+$composer install
+
+### src上
+$cp .env.example .env
+
+### PHPコンテナ内
+$php artisan key:generate  
+$php artisan migrate  
+$php artisan db:seed  
