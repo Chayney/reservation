@@ -200,25 +200,26 @@ body {
 
 .reserve_button {
     background-color: rgb(0, 63, 245);
-    width: 106.5%;
+    width: 100%;
     color: white;
     height: 50px;
-    margin-left: -20px;
-    margin-top: 195px;
+    bottom: 0px;
+    right: 0px;
     border-radius: 0px 0px 5px 5px;
     border: none;
+    position: absolute;
 }
 
 .select_form {
     height: 30px;
     border-radius: 5px;
     padding-left: 10px;
-    border: none;
     outline: none;
-    appearance: none;
+    border: none;
     cursor: pointer;
     width: 550px;
     margin-top: 20px;
+    position: relative;
 }
 
 .select_form_date {
@@ -228,11 +229,11 @@ body {
     border: none;
 }
 
-.select_form_time::after {
+.select_form::after {
     content: "";
     position: absolute;
-    top: 162px;
-    left: 545px;
+    top: 10px;
+    left: 75px;
     border-right: 8px solid transparent;
     border-left: 8px solid transparent;
     border-top: 15px solid #efefef;
@@ -240,19 +241,7 @@ body {
     pointer-events: none;
 }
 
-.select_form_person::after {
-    content: "";
-    position: absolute;
-    top: 215px;
-    left: 545px;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-    border-top: 15px solid #efefef;
-    border-bottom: 0;
-    pointer-events: none;
-}
-
-.error__item {
+.error__message {
     color: red;
     font-size: 15px;
     font-weight: bold;
@@ -298,7 +287,7 @@ body {
 
     .reserve_button {
         background-color: rgb(0, 63, 245);
-        width: 113%;
+        width: 100%;
         color: white;
         height: 50px;
         margin-left: -20px;
@@ -313,7 +302,6 @@ body {
         padding-left: 10px;
         border: none;
         outline: none;
-        appearance: none;
         cursor: pointer;
         width: 300px;
     }
@@ -325,27 +313,4 @@ body {
         border: none;
     }
     
-    .select_form_time::after {
-        content: "";
-        position: absolute;
-        top: 162px;
-        left: 300px;
-        border-right: 8px solid transparent;
-        border-left: 8px solid transparent;
-        border-top: 15px solid #efefef;
-        border-bottom: 0;
-        pointer-events: none;
-    }
-    
-    .select_form_person::after {
-        content: "";
-        position: absolute;
-        top: 215px;
-        left: 300px;
-        border-right: 8px solid transparent;
-        border-left: 8px solid transparent;
-        border-top: 15px solid #efefef;
-        border-bottom: 0;
-        pointer-events: none;
-    }
 }
