@@ -50,7 +50,7 @@ class ReservationController extends Controller
                 'user_id' => $user->id,
                 'shop_id' => $request->shop_id,
                 'date' => $request->input('date'),
-                'book_time' => $request->input('time'),
+                'time' => $request->input('time'),
                 'person' => $request->input('person')
             ]);
     

@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <th class="table__header">Time</th>
-              <td class="table__item">{{ $reservate['book_time']->format('H:i') }}</td>
+              <td class="table__item">{{ $reservate['time']->format('H:i') }}</td>
             </tr>
             <tr>
               <th class="table__header">Number</th>

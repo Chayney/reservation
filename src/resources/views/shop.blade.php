@@ -72,7 +72,7 @@
           </select>
           </label>
           <div class="error__item">
-            @error('book_time')
+            @error('time')
               <span class="error__message">{{ $message }}</span>
             @enderror
           </div>

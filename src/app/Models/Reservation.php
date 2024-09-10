@@ -13,12 +13,12 @@ class Reservation extends Model
         'user_id',
         'shop_id',
         'date',
-        'book_time',
+        'time',
         'person'
     ];
 
     protected $casts = [
-        'book_time' => 'datetime:H:i'
+        'time' => 'datetime:H:i'
     ];
 
     public function reserve_user()
