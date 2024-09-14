@@ -21,7 +21,7 @@ class ReservationController extends Controller
         $reservates = Reservation::where('user_id', $user->id)->with('reserve_shop')->get();
 
         // ログインユーザーのお気に入り店舗idを配列にする
-        $favorites = $user->favorite()->pluck('shop_id')->toArray();
+        $favorites = $user->userFavorites()->pluck('shop_id')->toArray();
 
         $favoriteShops = Shop::whereIn('id', $favorites)->get();
         

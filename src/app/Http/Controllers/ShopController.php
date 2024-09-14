@@ -17,7 +17,7 @@ class ShopController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $favorites = $user->favorite()->pluck('shop_id')->toArray();
+            $favorites = $user->userFavorites()->pluck('shop_id')->toArray();
             $shops = Shop::with('area', 'genre')->get();
             $areas = Area::all();
             $genres = Genre::all();
