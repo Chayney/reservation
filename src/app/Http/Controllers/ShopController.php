@@ -30,7 +30,6 @@ class ShopController extends Controller
 
             return view('index', compact('shops', 'areas', 'genres'));
         }
-
     }
 
     public function search(Request $request)
@@ -54,7 +53,6 @@ class ShopController extends Controller
 
             return view('index', compact('shops', 'areas', 'genres'));
         }
-        
     }
 
     public function detail(Request $request)
