@@ -69,12 +69,12 @@ class Shop extends Model
     public function favoritemarked()
     {
         $id = Auth::id();
-        $favoritemarkers = array(); //配列を用意
-        foreach ($this->favorites as $favoritemark) { //配列に要素を追加
-            array_push($favoritemarkers, $favoritemark->user_id); //第一引数が配列の箱
+        $favoritemarkers = array();
+        foreach ($this->favorites as $favoritemark) {
+            array_push($favoritemarkers, $favoritemark->user_id);
         }
         
-        if (in_array($id, $favoritemarkers)) { //配列の中に探したい値(第一引数)があるかみる
+        if (in_array($id, $favoritemarkers)) {
             return true;
         } else {
             return false;
