@@ -12,8 +12,8 @@ class Shop extends Model
 
     protected $fillable = [
         'shop',
-        'area',
-        'genre',
+        'area_id',
+        'genre_id',
         'shop_detail',
         'shop_image'
     ];
@@ -21,6 +21,16 @@ class Shop extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
 
     public function favorites()
@@ -36,14 +46,14 @@ class Shop extends Model
     public function scopeAreaSearch($query, $area)
     {
         if (!empty($area)) {
-            $query->where('area', $area);
+            $query->where('area_id', $area);
         }
     }
 
     public function scopeGenreSearch($query, $genre)
     {
         if (!empty($genre)) {
-            $query->where('genre', $genre);
+            $query->where('genre_id', $genre);
         }
     }
 
@@ -51,9 +61,7 @@ class Shop extends Model
     {
         if (!empty($keyword)) {
             $query->where(function ($query) use ($keyword) {
-              $query->where("shop", "like", "%" . $keyword . "%")
-                ->orWhere("area", "like", "%" . $keyword . "%")
-                ->orWhere("genre", "like", "%" . $keyword . "%");
+              $query->where("shop", "like", "%" . $keyword . "%");
             });
         }
     }

@@ -13,91 +13,53 @@ use App\Models\Reservation;
 
 class ShopController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         if (Auth::check()) {
             $user = Auth::user();
             $favorites = $user->favorite()->pluck('shop_id')->toArray();
-            $areas = Shop::select('area')->distinct()->get();
-            $selectedArea = $request->input('area');
-            $area = Shop::when($selectedArea, function($query, $selectedArea) {
-            return $query->where('area', $selectedArea);
-            })->get();
+            $shops = Shop::with('area', 'genre')->get();
+            $areas = Area::all();
+            $genres = Genre::all();
 
-            $genres = Shop::select('genre')->distinct()->get();
-            $selectedGenre = $request->input('genre');
-            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
-                return $query->where('genre', $selectedGenre);
-            })->get();
-            $shops = Shop::all();
-            return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
-            
+            return view('index', compact('shops', 'areas', 'genres', 'favorites'));
         } else {
-            $areas = Shop::select('area')->distinct()->get();
-            $selectedArea = $request->input('area');
-            $area = Shop::when($selectedArea, function($query, $selectedArea) {
-                return $query->where('area', $selectedArea);
-            })->get();
+            $shops = Shop::with('area', 'genre')->get();
+            $areas = Area::all();
+            $genres = Genre::all();
 
-            $genres = Shop::select('genre')->distinct()->get();
-            $selectedGenre = $request->input('genre');
-            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
-                return $query->where('genre', $selectedGenre);
-            })->get();
-            $shops = Shop::all();
-        
-            return view('index', compact('shops', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+            return view('index', compact('shops', 'areas', 'genres'));
         }
+
     }
 
     public function search(Request $request)
     {
         if (Auth::check()) {
-            $user = Auth::user();
-            $favorites = $user->favorite()->pluck('shop_id')->toArray();
-            $areas = Shop::select('area')->distinct()->get();
-            $selectedArea = $request->input('area');
-            $area = Shop::when($selectedArea, function($query, $selectedArea) {
-                return $query->where('area', $selectedArea);
-            })->get();
+            $shops = Shop::with('area', 'genre')
+                    ->AreaSearch($request->area)
+                    ->GenreSearch($request->genre)
+                    ->KeywordSearch($request->keyword)->get();
+            $areas = Area::all();
+            $genres = Genre::all();
 
-            $genres = Shop::select('genre')->distinct()->get();
-            $selectedGenre = $request->input('genre');
-            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
-                return $query->where('genre', $selectedGenre);
-            })->get();
-            
-            $shops = Shop::AreaSearch($request->area)
-                ->GenreSearch($request->genre)
-                ->KeywordSearch($request->keyword)->get();
-
-            return view('index', compact('shops', 'favorites', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
-        
+            return view('index', compact('shops', 'areas', 'genres'));
         } else {
-            $areas = Shop::select('area')->distinct()->get();
-            $selectedArea = $request->input('area');
-            $area = Shop::when($selectedArea, function($query, $selectedArea) {
-                return $query->where('area', $selectedArea);
-            })->get();
+            $shops = Shop::with('area', 'genre')
+                    ->AreaSearch($request->area)
+                    ->GenreSearch($request->genre)
+                    ->KeywordSearch($request->keyword)->get();
+            $areas = Area::all();
+            $genres = Genre::all();
 
-            $genres = Shop::select('genre')->distinct()->get();
-            $selectedGenre = $request->input('genre');
-            $genre = Shop::when($selectedGenre, function($query, $selectedGenre) {
-                return $query->where('genre', $selectedGenre);
-            })->get();
-            
-            $shops = Shop::AreaSearch($request->area)
-                ->GenreSearch($request->genre)
-                ->KeywordSearch($request->keyword)->get();
-
-            return view('index', compact('shops', 'areas', 'selectedArea', 'genres', 'selectedGenre'));
+            return view('index', compact('shops', 'areas', 'genres'));
         }
+        
     }
 
     public function detail(Request $request)
     {
         $shops = Shop::where('shop', $request->shop)->get();
-
         $reserve = $request->only(['shop', 'date', 'time', 'number']);
 
         return view('shop', compact('shops', 'reserve'));

@@ -44,7 +44,7 @@
               <select class="select_form" onchange="submit(this.form)" name="area">
                 <option value="">All area</option>
                 @foreach ($areas as $area)
-                  <option value="{{ $area['area'] }}" {{ $selectedArea == $area['area'] ? 'selected' : '' }}>{{ $area['area'] }}</option>
+                  <option value="{{ $area['name'] }}" {{ request('area') == $area->id ? 'selected' : '' }}>{{ $area['name'] }}</option>
                 @endforeach
               </select>
               </label>
@@ -54,7 +54,7 @@
               <select class="select_form" onchange="submit(this.form)" name="genre">
                 <option value="">All genre</option>
                 @foreach ($genres as $genre)
-                  <option value="{{ $genre['genre'] }}" {{ $selectedGenre == $genre['genre'] ? 'selected' : '' }}>{{ $genre['genre'] }}</option>
+                  <option value="{{ $genre['name'] }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>{{ $genre['name'] }}</option>
                 @endforeach
               </select>
               </label>
@@ -77,8 +77,8 @@
         <div class="child__container">
           <img class="shop_image" src="{{ $shop['shop_image'] }}">
           <span class="shop">{{ $shop['shop'] }}</span>
-          <span class="area">#{{ $shop['area'] }}</span>
-          <span class="genre">#{{ $shop['genre'] }}</span>
+          <span class="area">#{{ $shop['area']['name'] }}</span>
+          <span class="genre">#{{ $shop['genre']['name'] }}</span>
           <form action="/detail/{{ $shop['id'] }}" method="get">
             <button class="detail" type="submit" name="shop" value="{{ $shop['shop'] }}">詳しくみる</button>
           </form>
