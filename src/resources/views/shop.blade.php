@@ -45,8 +45,8 @@
         @foreach ($shops as $shop)
           <a class="home" href="{{ url('/') }}">&lt;</a><span class="shop_name"> {{ $shop['shop'] }}</span>
           <img src="{{ $shop['shop_image'] }}"><br><br>
-          <span class="area">#{{ $shop['area'] }}</span>
-          <span class="genre">#{{ $shop['genre'] }}</span><br><br>
+          <span class="area">#{{ $shop['area']['name'] }}</span>
+          <span class="genre">#{{ $shop['genre']['name'] }}</span><br><br>
           <span class="shop_detail">{{ $shop['shop_detail'] }}</span>
         @endforeach
       </div>
