@@ -236,7 +236,6 @@ body {
 .error__message {
     color: red;
     font-size: 15px;
-    font-weight: bold;
 }
 
 .table__item {
