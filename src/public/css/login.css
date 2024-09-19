@@ -1,16 +1,16 @@
 .login-form__heading {
-  margin-bottom: 20px;
+  margin-bottom: 5%;
   font-weight: bold;
 }
 
 .form__group-content {
-  margin-left: 10px;
+  margin-left: 2%;
   width: 75%;
 }
 
 .form__group {
   display: flex;
-  margin-bottom: 5px;
+  margin-bottom: 2%;
 }
 
 .login-form__heading {
@@ -49,13 +49,13 @@
   color: #fff;
   cursor: pointer;
   float: right;
-  margin-right: 40px;
+  margin-right: 10%;
 }
 
 .login__content {
   width: 30%;
   height: 250px;
-  margin: 100px auto;
+  margin: 10% auto;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 8px -5px;
@@ -69,17 +69,24 @@
 .label_image {
   object-fit: cover;
   height: 30px;
-  width: 30px;
-  margin-left: 30px;
+  margin-left: 7%;
 }
 
 @media screen and (max-width:768px) {
   .login__content {
-    width: 50%;
-    height: 230px;
-    margin: 80px auto;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 5px 5px 8px -5px;
+    width: 75%;
+    height: 250px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .label_image {
+    height: 35px;
+    width: 9%;
+  }
+
+  .form__button-submit {
+    width: 25%;
+    height: 40px;
   }
 }

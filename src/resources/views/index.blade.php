@@ -11,64 +11,60 @@
 
 <body>
   <header class="header">
-    <div class="header__inner">
-        <div class="nav-humberger">
-          <input id="drawer_input" class="drawer_hidden" type="checkbox">
-          <label for="drawer_input" class="drawer_open"><span></span></label>
-        <nav class="nav_content">
-            <ul class="nav_list">
-                <li class="nav_item"><a href="/">Home</a></li>
-                @if (Auth::check())
-                  <li class="nav_item">
-                    <form action="/logout" method="post">
-                      @csrf
-                      <button class="logout">Logout</button>
-                    </form>
-                  </li>
-                  <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
-                @else
-                  <li class="nav_item"><a href="{{ url('register') }}">Registration</a></li>
-                  <li class="nav_item"><a href="{{ url('login') }}">Login</a></li>
-                @endif
-            </ul>
-        </nav>
-        </div>
-      <a class="header__logo" href="/">
-        Rese
-      </a>
-      <nav class="nav">
-        <ul class="nav-list">
-          <form class="search-list" action="/search" method="get">
-            <li class="nav-item">
-              <label class="select_box">
-              <select class="select_form" onchange="submit(this.form)" name="area">
-                <option value="">All area</option>
-                @foreach ($areas as $area)
-                  <option value="{{ $area['id'] }}" {{ request('area') == $area->id ? 'selected' : '' }}>{{ $area['name'] }}</option>
-                @endforeach
-              </select>
-              </label>
-            </li>
-            <li class="nav-item">
-              <label>
-              <select class="select_form" onchange="submit(this.form)" name="genre">
-                <option value="">All genre</option>
-                @foreach ($genres as $genre)
-                  <option value="{{ $genre['id'] }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>{{ $genre['name'] }}</option>
-                @endforeach
-              </select>
-              </label>
-            </li>
-          </form>
-          <form action="/search" method="get">
-            <li class="nav-item">
-              <span class="search_box"><img src="{{ asset('image/magnifying_glass.png') }}"></span>
-              <input type="text" name="keyword" placeholder="Search ..." value="{{  request('keyword') }}">
-            </li>
-          </form>
+    <div class="nav-humberger">
+      <input id="drawer_input" class="drawer_hidden" type="checkbox">
+      <label for="drawer_input" class="drawer_open"><span></span></label>
+    <nav class="nav_content">
+        <ul class="nav_list">
+            <li class="nav_item"><a href="/">Home</a></li>
+            @if (Auth::check())
+              <li class="nav_item">
+                <form action="/logout" method="post">
+                  @csrf
+                  <button class="logout">Logout</button>
+                </form>
+              </li>
+              <li class="nav_item"><a href="{{ url('mypage') }}">Mypage</a></li>
+            @else
+              <li class="nav_item"><a href="{{ url('register') }}">Registration</a></li>
+              <li class="nav_item"><a href="{{ url('login') }}">Login</a></li>
+            @endif
         </ul>
-      </nav>
+    </nav>
+    <a class="header__logo" href="/">
+    Rese
+    </a>
     </div>
+    <ul class="nav-list">
+      <form class="search-list" action="/search" method="get">
+        <li class="nav-item">
+          <label class="select_box">
+          <select class="select_form" onchange="submit(this.form)" name="area">
+            <option value="">All area</option>
+            @foreach ($areas as $area)
+              <option value="{{ $area['id'] }}" {{ request('area') == $area->id ? 'selected' : '' }}>{{ $area['name'] }}</option>
+            @endforeach
+          </select>
+          </label>
+        </li>
+        <li class="nav-item">
+          <label class="select_box">
+          <select class="select_form" onchange="submit(this.form)" name="genre">
+            <option value="">All genre</option>
+            @foreach ($genres as $genre)
+              <option value="{{ $genre['id'] }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>{{ $genre['name'] }}</option>
+            @endforeach
+          </select>
+          </label>
+        </li>
+      </form>
+      <form class="search-word" action="/search" method="get">
+        <li class="nav-item">
+          <span class="search_box"><img src="{{ asset('image/magnifying_glass.png') }}"></span>
+          <input type="text" name="keyword" placeholder="Search ..." value="{{  request('keyword') }}">
+        </li>
+      </form>
+    </ul>
   </header>
 
   <main>
@@ -110,5 +106,7 @@
       @endforeach
     </div>
   <main>
+
 </body>
+
 </html>

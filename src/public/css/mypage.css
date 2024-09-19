@@ -2,25 +2,30 @@ body {
     font-family: 'Simonetta', sans-serif;
     font-size: 15px;
     letter-spacing: .05em;
-    color: #333;
+    color: black;
     background-color: #f2f2f2;
-    position: relative;
 }
   
 .header {
-    margin-top: -10px;
+    top: 0;
+    left: 0;
+    position: fixed;
     width: 100%;
-    margin-left: -10px;
-}
-
-.header__inner {
+    background-color: #f2f2f2;
+    z-index: 100;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 20px 40px;
 }
 
 .header__logo {
-    margin-left: 40px;
+    color: rgb(53,96,246);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 100px;
+    position: fixed;
 }
 
 .nav-humberger {
@@ -28,6 +33,7 @@ body {
     background-color: rgb(53,96,246);
     border-radius: 5px;
     box-shadow: 5px 5px 8px -5px;
+    display: flex;
 }
 
 .drawer_hidden {
@@ -118,13 +124,6 @@ body {
     font-size: 25px;
 }
 
-.header__logo {
-    color: rgb(53,96,246);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 40px;
-}
-
 .logout {
     border: none;
     outline: none;
@@ -134,22 +133,42 @@ body {
     font-size: 25px;
 }
 
-.contact-form__content {
+.container {
+    margin: 6% auto;
+}
+
+.login_user {
+    margin-top: 7%;
+    text-align: center;
+}
+
+.tab-content {
     display: flex;
     flex-wrap: wrap;
-    width:90%;
+    width:95%;
+}
+
+#tab1 {
+    width: 47%;
+    margin-top: 2%;
+}
+
+#tab2 {
+    width: 53%;
 }
 
 .parent__container-left {
     display: block;
     width:45%;
+    margin: 5% 0 0 0;
 }
 
 .parent__container-right {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width:55%;
+    width: 100%;
+    margin: 5% 0 0 0;
 }
 
 .child__container-left {
@@ -160,20 +179,24 @@ body {
 
 .reservation__table {
     width: 100%;
-    margin-bottom: 50px;
+    height: 300px;
     background-color: rgb(53,96,246);
     border-radius: 5px;
     box-shadow: 5px 5px 8px -5px;
     color: white;
+    margin: 5% auto;
 }
 
 .table__header {
     padding: 10px;
 }
 
+.table__header_clock {
+    width: 35%;
+}
+
 .left-title {
-    margin-top: 70px;
-    margin-left: 100px;
+    margin: 0 0 5% 15%;
 }
 
 .child__container-right {
@@ -181,7 +204,7 @@ body {
     height: 270px;
     width: 40%;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 5%;
     padding: 20px;
     box-shadow: 5px 5px 8px -5px;
     position: relative;
@@ -194,12 +217,14 @@ body {
 .detail {
     border: none;
     outline: none;
-    margin: 220px auto;
+    top: 245px;
     font-size: 15px;
     background-color: rgb(53,96,246);
     color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 8px 15px;
+    z-index: 11;
+    position: absolute;
 }
 
 .shop_image {
@@ -224,7 +249,7 @@ body {
 
 .area {
     position: absolute;
-    top: 210px;
+    top: 215px;
     left: 20px;
     font-size: 13px;
     z-index: 11;
@@ -232,37 +257,33 @@ body {
 
 .genre {
     position: absolute;
-    top: 210px;
+    top: 215px;
     left: 75px;
     font-size: 13px;
     z-index: 11;
 }
 
-.favorite img {
-    position: absolute;
-    top: 235px;
-    left: 270px;
-    width: 15%;
-    height: 50px;
-    object-fit: cover;
-    z-index: 11;
-}
-
 .favorite {
+    position: absolute;
+    top: 240px;
+    left: 80%;
     border: none;
     outline: none;
+    z-index: 11;
+    background-color: white;
+}
+
+.favorite img {
+    width: 100%;
+    height: 40px;
 }
 
 .clock_image {
-    width: 27%;
-    height: 39px;
-    object-fit: cover;
+    height: 41px;
 }
 
 .batsu_image {
-    width: 42%;
-    height: 25px;
-    object-fit: cover;
+    height: 30px;
     background-color: rgb(53,96,246);
 }
 
@@ -273,42 +294,83 @@ body {
     width: 100%;
 }
 
+.tab-button {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
 @media screen and (max-width:768px) {
     .header {
-        margin-left: -50px;
+        top: 0;
+        position: fixed;
+        width: 100%;
+        background-color: #f2f2f2;
+        z-index: 100;
+        display: block;
     }
 
-    .header__inner {
+    .nav-humberger {
+        margin: 0;
+        padding: 0;
+        width: 9%;
+    }
+
+    .tab-content {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .tabs {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: -10%;
+    }
+
+    .tab-pane {
+        display: none;
+    }
+
+    #tab1 {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #tab2 {
         width: 100%;
     }
 
-    .header__logo {
-        margin-left: 10px;
+    .tab-button {
+        width: 40%;
+        margin: 25% auto 0 auto;
+        display: initial;
+        border: none;
+        outline: none;
+        background-color: white;
+        font-weight: bold;
+        font-size: 20px;
     }
 
     .left-title {
-        margin-top: 70px;
-        margin-left: 50px;
-    }
-
-    .contact-form__content {
-        width: 95%;
-    }
-
-    .parent__container-left {
-        display: block;
-        width:60%;
+        margin: 3% 0;
     }
 
     .child__container-left {
-        width: 80%;
+        width: 100%;
         height: 300px;
     }
 
-    .parent__container-right {
-        display: flex;
-        flex-wrap: wrap;
-        width:40%;
+    .reserve_delete {
+        width: 70%;
+    }
+
+    .right-title {
+        margin: 5% 0;
     }
 
     .child__container-right {
@@ -321,26 +383,12 @@ body {
         box-shadow: 5px 5px 8px -5px;
         position: relative;
     }
+}
 
-    .favorite img {
-        position: absolute;
-        top: 235px;
-        left: 220px;
-        width: 18%;
-        height: 50px;
-        object-fit: cover;
-        z-index: 11;
-    }
-
-    .clock_image {
-        width: 35%;
-        height: 39px;
-        object-fit: cover;
-    }
-    
-    .batsu_image {
-        width: 55%;
-        height: 25px;
-        object-fit: cover;
+@media screen and (max-width:500px) {
+    .tab-button {
+        margin: 35% auto 0 auto;
+        height: 30px;
+        font-size: 14px;
     }
 }

@@ -4,19 +4,15 @@ body {
     letter-spacing: .05em;
     color: black;
     background-color: #f2f2f2;
-    position: relative;
 }
   
 .header {
     top: 0;
-    margin-left: -15px;
+    left: 0;
     position: fixed;
     width: 100%;
     background-color: #f2f2f2;
     z-index: 100;
-}
-
-.header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,7 +24,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     font-size: 40px;
-    margin-left: 150px;
+    margin-left: 100px;
     position: fixed;
 }
 
@@ -37,6 +33,7 @@ body {
     background-color: rgb(53,96,246);
     border-radius: 5px;
     box-shadow: 5px 5px 8px -5px;
+    display: flex;
 }
 
 .drawer_hidden {
@@ -127,18 +124,15 @@ body {
     font-size: 25px;
 }
 
-.nav {
-    margin: 0 37px;
-    width: 45%;
+.nav-list {
+    display: flex;
+    position: fixed;
+    list-style: none;
+    margin-left: 43%;
+    width: 45.5%;
     border-radius: 10px;
     background-color: white;
     box-shadow: 5px 5px 8px -5px;
-}
-
-.nav-list {
-    display: flex;
-    list-style: none;
-    margin-left: -20px;
 }
 
 .nav-item {
@@ -147,7 +141,7 @@ body {
     height: 30px;
 }
 
-.nav-item > label::after {
+.nav-item label::after {
     content: "";
     position: absolute;
     top: 10px;
@@ -189,20 +183,21 @@ body {
     display: inline-block;
     position: relative;
     font-size: 20px;
+    margin-top: 5px;
 }
 
 .search-list {
     display: flex;
+    padding: 5px;
 }
 
 .nav-item img {
     background-color: #f2f2f2;
     height: 25px;
-    margin-left: 5px;
 }
   
 .nav-item input {
-    padding: 1px 0 1px 1em;
+    padding: 9px 0 1px 1em;
     border: none;
     outline: none;
     font-weight: bold;
@@ -212,9 +207,9 @@ body {
 .parent__container {
     display: flex;
     flex-wrap: wrap;
-    width: 92%;
-    justify-content: space-around;
-    margin: 100px auto;
+    width: 90%;
+    justify-content: space-between;
+    margin: 8% auto;
 }
 
 .child__container {
@@ -232,14 +227,13 @@ body {
 .detail {
     border: none;
     outline: none;
-    margin: 50px auto;
     font-size: 15px;
     background-color: rgb(53,96,246);
     color: white;
     border-radius: 10px;
     padding: 8px 15px;
     position: absolute;
-    top: 180px;
+    top: 230px;
     z-index: 11;
 }
 
@@ -279,14 +273,19 @@ body {
     z-index: 11;
 }
 
-.favorite img {
+.favorite {
     position: absolute;
     top: 230px;
-    left: 240px;
-    width: 14%;
+    left: 80%;
+    border: none;
+    outline: none;
+    background-color: white;
+    z-index: 11; 
+}
+
+.favorite img {
+    width: 100%;
     height: 40px;
-    object-fit: cover;
-    z-index: 11;
 }
 
 @media screen and (max-width:768px) {
@@ -296,58 +295,63 @@ body {
         width: 100%;
         background-color: #f2f2f2;
         z-index: 100;
-    }
-
-    .header__inner {
         display: block;
-    }
-
-    .header__logo {
-        margin-top: -7.5%;
-        margin-left: 20%;
-    }
-
-    .nav {
-        width: 85%;
-        margin: 0 auto;
-        height: 40px;
+        height: 100px;
     }
 
     .nav-humberger {
-        width: 5%;
+        margin: 0;
+        padding: 0;
+        width: 9%;
     }
 
     .nav-list {
-        width: 80%;
-        padding: 5px;
+        width: 90%;
+        margin: 5% 0;
+        padding: 0;
     }
 
     .nav-item {
-        margin-left: 10%;
+        width: 50%;
+    }
+
+    .nav-item input {
+        width: 100%;
     }
 
     .nav-item > label::after {
-        left: 75%;
+        left: 70%;
     }
 
     .search-list {
-        margin-left: 2%;
+        width: 70%;
+    }
+
+    .search-word {
+        width: 70%;
     }
 
     .select_form {
         height: 30px;
+        width: 100%;
+    }
+
+    .select_box {
+        width: 100%;
+        border-right: solid 3px;
+        border-color: #efefef;
     }
 
     .parent__container {
         display: flex;
         flex-wrap: wrap;
-        width: 82%;
+        width: 95%;
         justify-content: space-between;
-        margin: 150px auto;
+        margin: 200px auto;
     }
 
     .child__container {
-        width: 88%;
+        width: 100%;
         height: 250px;
         position: relative;
         z-index: 10;
@@ -390,12 +394,24 @@ body {
         position: absolute;
         z-index: 11;
     }
-    
-    .favorite img {
-        margin-left: 40%;
-        width: 8%;
-        height: 45px;
-        object-fit: cover;
-        z-index: 11;
+}
+
+@media screen and (max-width: 550px) {
+    .nav-humberger {
+        margin: 0;
+        padding: 0;
+        width: 10%;
+    }
+
+    .nav-list {
+        margin: 10% 0 10% -4%;
+    }
+
+    .search-word {
+        width: 50%;
+    }
+
+    .search-word > .nav-item {
+        width: 90%;
     }
 }

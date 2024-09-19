@@ -4,13 +4,14 @@
 }
 
 .form__group-content {
-  margin-left: 10px;
+  margin-left: 3%;
   width: 75%;
 }
 
 .form__group {
   display: flex;
-  margin-bottom: 5px;
+  margin: 1%;
+  width: 100%;
 }
 
 .register-form__heading {
@@ -40,7 +41,7 @@
 
 .form__button-submit {
   padding: 5px;
-  width: 15%;
+  width: 20%;
   height: 40px;
   border: none;
   font-weight: bold;
@@ -49,7 +50,7 @@
   color: #fff;
   cursor: pointer;
   float: right;
-  margin-right: 40px;
+  margin-right: 10%;
 }
 
 .register__content {
@@ -69,17 +70,26 @@
 .label_image {
   object-fit: cover;
   height: 30px;
-  width: 30px;
-  margin-left: 30px;
+  width: 7%;
+  margin-left: 5%;
 }
 
 @media screen and (max-width:768px) {
   .register__content {
-    width: 50%;
+    width: 75%;
     height: 280px;
-    margin: 80px auto;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 5px 5px 8px -5px;
+  }
+
+  .label_image {
+    height: 35px;
+    width: 6%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .label_image {
+    height: 30px;
+    width: 8%;
   }
 }
