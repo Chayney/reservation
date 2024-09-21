@@ -50,17 +50,19 @@
         <div id="tab1" class="tab-pane">
         <h2 class="left-title">予約状況</h2>
         <div class="child__container-left">
-          <form action="/mypage/destroy" method="post">
-            @csrf
-            @method('DELETE')
           @foreach ($reservates as $reservate)
           <table class="reservation__table">
             <tr>
               <th class="table__header_clock"><img class="clock_image" src="{{ asset('image/clock.png') }}"></th>
               <td class="table__item">予約{{ $loop->iteration }}</td>
+              <form action="/mypage/destroy" method="post">
+                @csrf
+                @method('DELETE')
               <td class="table__item">
+                <input type="hidden" name="id" value="{{ $reservate['shop_id'] }}">
                 <button class="reserve_delete" type="submit"><img class="batsu_image" src="{{ asset('image/batsu.png') }}"></button>
               </td>
+              </form>
             </tr>
             <tr>
               <th class="table__header">Shop</th>
@@ -77,10 +79,14 @@
             <tr>
               <th class="table__header">Number</th>
               <td class="table__item">{{ $reservate['person'] }}</td>
+              <form action="/mypage/edit" method="get">
+              <td class="table__item">
+                <button class="reserve_modify" type="submit" name="id" value="{{ $reservate['id'] }}">予約変更</button>
+              </td>
+              </form>
             </tr>
           </table>
           @endforeach
-          </form>
         </div>
         </div>
         <div id="tab2" class="tab-pane">

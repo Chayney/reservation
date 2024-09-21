@@ -28,6 +28,7 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::middleware(['auth', 'verified'])->group(function () {
     // マイページ、店舗予約
     Route::get('/mypage', [ReservationController::class, 'index']);
+    Route::get('/mypage/edit', [ReservationController::class, 'edit']);
     Route::delete('/mypage/destroy', [ReservationController::class, 'delete']);
     Route::post('/done', [ReservationController::class, 'store']);
     Route::delete('/favoriteshop/destroy', [ReservationController::class, 'destroy']);

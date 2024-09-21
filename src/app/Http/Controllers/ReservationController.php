@@ -28,10 +28,10 @@ class ReservationController extends Controller
         return view('mypage', compact('reservates', 'favoriteShops'));
     }
 
-    public function delete(Request $request, Reservation $reservates)
+    public function delete(Request $request)
     {
         $user = Auth::user();
-        $shop_id = $reservates->pluck('shop_id');
+        $shop_id = ($request->id);
         $reserve = Reservation::where('user_id', $user->id)->where('shop_id', $shop_id)->delete();
         
         return redirect()->back();
@@ -56,6 +56,16 @@ class ReservationController extends Controller
     
             return view('done');
         }
+    }
+
+    public function edit(Request $request)
+    {
+        $user = Auth::user();
+        $reservate = Reservation::find($request->id);
+        $shops = Shop::where('id', $reservate->shop_id)->get();
+        $reservates = Reservation::where('id', $request->id)->get();
+    
+        return view('edit', compact('reservates', 'shops'));
     }
 
     public function destroy(Request $request)
