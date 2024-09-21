@@ -17,12 +17,8 @@ class ReservationController extends Controller
     public function index()
     {
         $user = Auth::user();
-
         $reservates = Reservation::where('user_id', $user->id)->with('reserve_shop')->get();
-
-        // ログインユーザーのお気に入り店舗idを配列にする
         $favorites = $user->userFavorites()->pluck('shop_id')->toArray();
-
         $favoriteShops = Shop::whereIn('id', $favorites)->get();
         
         return view('mypage', compact('reservates', 'favoriteShops'));
@@ -40,11 +36,8 @@ class ReservationController extends Controller
     public function store(ReservationRequest $request)
     {
         $user = Auth::user();
-
         $shop_id = $request->shop_id;
-        
         $reserve = Reservation::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
-
         if (empty($reserve)) {
             $reserve = Reservation::create([
                 'user_id' => $user->id,
@@ -71,9 +64,7 @@ class ReservationController extends Controller
     public function destroy(Request $request)
     {
         $user = Auth::user();
-
         $shop_id = $request->shop_id;
-
         Favorite::where('user_id', $user->id)->where('shop_id', $shop_id)->delete();
 
         return redirect()->back();
