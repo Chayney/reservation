@@ -43,7 +43,7 @@
 
       <div class="left-content">
         @foreach ($shops as $shop)
-          <a class="home" href="{{ url('/') }}">&lt;</a><span class="shop_name"> {{ $shop['shop'] }}</span>
+          <a class="home" href="{{ url('mypage') }}">&lt;</a><span class="shop_name"> {{ $shop['shop'] }}</span>
           <img src="{{ $shop['shop_image'] }}"><br><br>
           <span class="area">#{{ $shop['area']['name'] }}</span>
           <span class="genre">#{{ $shop['genre']['name'] }}</span><br><br>
@@ -56,8 +56,9 @@
       <div class="right-content">
         <h1>予約</h1>
         @foreach ($reservates as $reservate)
-        <form action="/done" method="post">
+        <form action="/mypage" method="post">
           @csrf
+          @method('PATCH')
           <input type="date" class="select_form_date" id="date" onchange="updateDate()" name="date" value="{{ old('date', $reservate['date']) }}">
           <div class="error__item">
             @error('date')
@@ -114,7 +115,7 @@
               </tr>
             </table>
           </div>
-          <input type="submit" class="reserve_button" value="予約する">
+          <input type="submit" class="reserve_button" value="予約変更する">
         </form>
       </div>
     </div> 

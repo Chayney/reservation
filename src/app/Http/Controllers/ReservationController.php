@@ -61,6 +61,20 @@ class ReservationController extends Controller
         return view('edit', compact('reservates', 'shops'));
     }
 
+    public function update(ReservationRequest $request)
+    {
+        $user = Auth::user();
+        $shop_id = $request->shop_id;
+        $reservates = Reservation::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
+        $reservates->update([
+            'date' => $request->input('date'),
+            'time' => $request->input('time'),
+            'person' => $request->input('person')
+        ]);
+    
+        return view('mypage');
+    }
+
     public function destroy(Request $request)
     {
         $user = Auth::user();
