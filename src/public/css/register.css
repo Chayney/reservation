@@ -56,7 +56,7 @@
 .register__content {
   width: 30%;
   height: 300px;
-  margin: 100px auto;
+  margin: 15% auto;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 8px -5px;
@@ -78,6 +78,7 @@
   .register__content {
     width: 75%;
     height: 280px;
+    margin: 25% auto;
   }
 
   .label_image {
@@ -88,6 +89,10 @@
 }
 
 @media screen and (max-width:550px) {
+  .register__content {
+    margin: 35% auto;
+  }
+
   .label_image {
     height: 30px;
     width: 8%;

@@ -55,7 +55,7 @@
 .login__content {
   width: 30%;
   height: 250px;
-  margin: 10% auto;
+  margin: 15% auto;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 8px -5px;
@@ -76,10 +76,15 @@
   .login__content {
     width: 75%;
     height: 250px;
+    margin: 25% auto;
   }
 }
 
 @media screen and (max-width:500px) {
+  .login__content {
+    margin: 35% auto;
+  }
+
   .label_image {
     height: 35px;
     width: 9%;
