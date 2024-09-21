@@ -72,7 +72,7 @@ class ReservationController extends Controller
             'person' => $request->input('person')
         ]);
     
-        return view('mypage', compact('reservates'));
+        return redirect('/mypage');
     }
 
     public function destroy(Request $request)
