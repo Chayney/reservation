@@ -119,13 +119,13 @@
               </tr>
             </table>
           </div>
-          <input type="submit" class="reserve_button" value="予約変更する">
+          <input type="submit" class="reserve_button" value="予約変更する" onclick="return showAlert('本当に予約を変更しますか？')">
         </form>
       </div>
     </div> 
   </div>
 
-  <script src="{{ asset('js/shop.js') }}"></script>
+  <script src="{{ asset('js/shop.js') }}" type="text/javascript"></script>
 
 </body>
 

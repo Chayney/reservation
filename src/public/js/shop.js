@@ -19,3 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var tomorrow = today.toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', tomorrow);
 });
+
+function showAlert(message) {
+    return confirm(message);
+}

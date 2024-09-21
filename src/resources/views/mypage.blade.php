@@ -65,7 +65,7 @@
                 @method('DELETE')
               <td class="table__item">
                 <input type="hidden" name="id" value="{{ $reservate['shop_id'] }}">
-                <button class="reserve_delete" type="submit"><img class="batsu_image" src="{{ asset('image/batsu.png') }}"></button>
+                <button class="reserve_delete" type="submit" onclick="return showAlert('本当に予約を削除しますか？')"><img class="batsu_image" src="{{ asset('image/batsu.png') }}"></button>
               </td>
               </form>
             </tr>
@@ -107,7 +107,7 @@
                 @csrf
                 @method('DELETE')
               <input type="hidden" name="shop_id" value="{{ $favoriteShop['id'] }}">
-              <button class="favorite" type="submit">
+              <button class="favorite" type="submit" onclick="return showAlert('本当にお気に入りから削除しますか？')">
                 <img src="{{ asset('image/red_heart.png') }}">
               </button>
               </form>
@@ -119,7 +119,7 @@
     </div>    
   <main>
 
-  <script src="{{ asset('js/mypage.js') }}"></script>
+  <script src="{{ asset('js/mypage.js') }}" type="text/javascript"></script>
 
 </body>
 
