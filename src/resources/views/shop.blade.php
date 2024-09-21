@@ -99,16 +99,16 @@
               </tr>
               <tr>
                 <th class="table__header">Date</th>
-                <td class="table__item" id="selectedDate" name="date">{{ old('date', request()->is('*edit*') ? $reserve['date'] : '') }}
+                <td class="table__item" id="selectedDate" name="date">{{ old('date') }}
                 </td>
               </tr>
               <tr>
                 <th class="table__header">Time</th>
-                <td class="table__item" id="selectedTime" name="time">{{ old('time', request()->is('*edit*') ? $reserve['time'] : '') }}
+                <td class="table__item" id="selectedTime" name="time">{{ old('time') }}
               </tr>
               <tr>
                 <th class="table__header">Number</th>
-                <td class="table__item" id="selectedPerson" name="person">{{ old('person', request()->is('*edit*') ? $reserve['person'] : '') }}
+                <td class="table__item" id="selectedPerson" name="person">{{ old('person') }}
               </tr>
             </table>
           </div>
