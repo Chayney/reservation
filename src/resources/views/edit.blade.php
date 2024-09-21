@@ -69,7 +69,9 @@
           <select id="time" class="select_form" onchange="updateTime()" name="time">
             <option selected>{{ $reservate['time']->format('H:i') }}</option>
             @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
-              <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
+              @if ($reservate['time']->format('H:i') != $time)
+                <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
+              @endif
             @endforeach
           </select>
           </label>
@@ -82,7 +84,9 @@
           <select id="person" class="select_form" onchange="updatePerson()" name="person">
             <option selected>{{ $reservate['person'] }}</option>
             @foreach (['1人', '2人', '3人', '4人', '5人以上'] as $person)
-              <option value="{{ $person }}" {{ old('person') == $person ? 'selected' : '' }}>{{ $person }}</option>
+              @if ($reservate['person'] != $person)
+                <option value="{{ $person }}" {{ old('person') == $person ? 'selected' : '' }}>{{ $person }}</option>
+              @endif
             @endforeach
           </select>
           </label>
