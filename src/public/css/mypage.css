@@ -287,6 +287,18 @@ body {
     background-color: rgb(53,96,246);
 }
 
+.edit_image {
+    height: 30px;
+    background-color: rgb(53,96,246);
+}
+
+.reserve_modify {
+    border: none;
+    outline: none;
+    background-color: rgb(53,96,246);
+    width: 100%;
+}
+
 .reserve_delete {
     border: none;
     outline: none;
@@ -363,10 +375,6 @@ body {
     .child__container-left {
         width: 100%;
         height: 300px;
-    }
-
-    .reserve_delete {
-        width: 70%;
     }
 
     .right-title {

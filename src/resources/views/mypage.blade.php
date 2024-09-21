@@ -40,8 +40,8 @@
   <main>
     <div class="container">
       <div class="tabs">
-        <button class="tab-button" data-target="tab1">予約情報</button>
-        <button class="tab-button" data-target="tab2">お気に入り店舗一覧</button>
+        <button class="tab-button" data-target="tab1">予約状況</button>
+        <button class="tab-button" data-target="tab2">お気に入り店舗</button>
       </div>
       @if (Auth::check())
         <h1 class="login_user">{{ Auth::user()['name'] }}さん</h1>
@@ -55,6 +55,11 @@
             <tr>
               <th class="table__header_clock"><img class="clock_image" src="{{ asset('image/clock.png') }}"></th>
               <td class="table__item">予約{{ $loop->iteration }}</td>
+              <form action="/mypage/edit" method="get">
+              <td class="table__item">
+                <button class="reserve_modify" type="submit" name="id" value="{{ $reservate['id'] }}"><img class="edit_image" src="{{ asset('image/edit.png') }}"></button>
+              </td>
+              </form>
               <form action="/mypage/destroy" method="post">
                 @csrf
                 @method('DELETE')
@@ -79,11 +84,6 @@
             <tr>
               <th class="table__header">Number</th>
               <td class="table__item">{{ $reservate['person'] }}</td>
-              <form action="/mypage/edit" method="get">
-              <td class="table__item">
-                <button class="reserve_modify" type="submit" name="id" value="{{ $reservate['id'] }}">予約変更</button>
-              </td>
-              </form>
             </tr>
           </table>
           @endforeach
