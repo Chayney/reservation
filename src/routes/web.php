@@ -37,7 +37,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // 店舗一覧でのお気に入り追加と削除
     Route::post('/favorite/store', [FavoriteController::class, 'store']);
     Route::delete('/favorite/destroy{shop}', [FavoriteController::class, 'destroy']);
-    
+
 });
-
-
