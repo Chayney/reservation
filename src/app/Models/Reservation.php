@@ -23,7 +23,7 @@ class Reservation extends Model
 
     public function reserve_user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function reserve_shop()
