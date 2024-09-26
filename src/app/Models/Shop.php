@@ -66,15 +66,15 @@ class Shop extends Model
         }
     }
 
-    public function favoritemarked()
+    public function favoriteMarked()
     {
         $id = Auth::id();
-        $favoritemarkers = array();
-        foreach ($this->favorites as $favoritemark) {
-            array_push($favoritemarkers, $favoritemark->user_id);
+        $favoriteMarkers = array();
+        foreach ($this->favorites as $favoriteMark) {
+            array_push($favoriteMarkers, $favoriteMark->user_id);
         }
         
-        if (in_array($id, $favoritemarkers)) {
+        if (in_array($id, $favoriteMarkers)) {
             return true;
         } else {
             return false;

@@ -71,7 +71,7 @@
             </tr>
             <tr>
               <th class="table__header">Shop</th>
-              <td class="table__item">{{ $reservate['reserve_shop']['shop'] }}</td>
+              <td class="table__item">{{ $reservate['reserveShop']['shop'] }}</td>
             </tr>
             <tr>
               <th class="table__header">Date</th>

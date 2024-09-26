@@ -21,12 +21,12 @@ class Reservation extends Model
         'time' => 'datetime:H:i'
     ];
 
-    public function reserve_user()
+    public function reserveUser()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function reserve_shop()
+    public function reserveShop()
     {
         return $this->belongsTo(Shop::class, 'shop_id');
     }

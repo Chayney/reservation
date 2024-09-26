@@ -79,7 +79,7 @@
             <button class="detail" type="submit" name="shop" value="{{ $shop['shop'] }}">詳しくみる</button>
           </form>
           @if (Auth::check())
-            @if ($shop->favoritemarked())
+            @if ($shop->favoriteMarked())
             <form action="/favorite/destroy{shop}" method="post">
               @csrf
               @method('DELETE')

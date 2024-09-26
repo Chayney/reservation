@@ -17,7 +17,7 @@ class ReservationController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $reservates = Reservation::where('user_id', $user->id)->with('reserve_shop')->get();
+        $reservates = Reservation::where('user_id', $user->id)->with('reserveShop')->get();
         $favorites = $user->userFavorites()->pluck('shop_id')->toArray();
         $favoriteShops = Shop::whereIn('id', $favorites)->get();
         
