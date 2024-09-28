@@ -1,0 +1,184 @@
+body {
+    font-family: 'Simonetta', sans-serif;
+    font-size: 15px;
+    letter-spacing: .05em;
+    color: black;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+
+.parent__container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10% auto;
+}
+
+.child__container-left {
+    width: 45%;
+    font-weight: bold;
+}
+
+.shop_image {
+    width: 100%;
+    height: 350px;
+}
+
+.shop_title {
+    font-size: 20px;
+}
+
+.child__container-right {
+    width: 45%;
+}
+
+.rating_group {
+    font-size: 20px;
+    margin-top: 5%;
+}
+
+.comment_group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 20px;
+    margin-top: 20%;
+}
+
+.comment_box {
+    width: 60%;
+}
+
+.review_post {
+    margin-top: 20%;
+    width: 50%;
+}
+
+.form-rating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-top: 3%;
+    font-size: 20px;
+}
+
+.form-rating__input {
+    display: none;
+}
+
+.form-rating__label {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 10px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.form-rating__label:hover,
+.form-rating__label:hover ~ .form-rating__label,
+.form-rating__input:checked ~ .form-rating__label {
+    /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
+    color: gold;
+}
+
+@media screen and (max-width:768px) {
+    .header {
+        width: 100%;
+        height: 90px;
+        background-color: #f2f2f2;
+        position: fixed;
+        padding-top: 10px;
+        z-index: 100;
+    }
+
+    .header__inner {
+        padding: initial;
+    }
+
+    .header__logo {
+        margin-left: 5%;
+    }
+
+    .parent__container {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .child__container-left {
+        width: 90%;
+    }
+
+    .left-content {
+        width: 100%;
+        margin: 20% 5% 5% 6%;
+        font-weight: bold;
+    }
+
+    .left-content > img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .child__container-right {
+        display: flex;
+        flex-wrap: wrap;
+        width: 85%;
+        height: 550px;
+        background-color: rgb(53,96,246);
+        border-radius: 5px;
+        margin: 20% auto;
+        padding: 20px;
+        color: white;
+        position: relative;
+    }
+
+    .right-content {
+        width: 100%;
+    }
+
+    .reserve_button {
+        background-color: rgb(0, 63, 245);
+        width: 100%;
+        color: white;
+        height: 50px;
+        border-radius: 0px 0px 5px 5px;
+        border: none;
+    }
+    
+    .select_form {
+        height: 30px;
+        border-radius: 5px;
+        padding-left: 30px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 90%;
+    }
+    
+    .select_form_date {
+        height: 30px;
+        width: 60%;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .select_form_date[type="date"] {
+        padding-left: 30px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .header {
+        margin-left: -8%;
+    }
+
+    .child__container-right {
+        margin: 50% auto;
+    }
+
+    .left-content {
+        margin: 30% 5% 5% 6%;
+    }
+}

@@ -5,6 +5,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/favorite/store', [FavoriteController::class, 'store']);
     Route::delete('/favorite/destroy{shop}', [FavoriteController::class, 'destroy']);
 
+    // 店舗のレビュー
+    Route::get('/review/{shop_id}', [ReviewController::class, 'index']);
+    
 });
