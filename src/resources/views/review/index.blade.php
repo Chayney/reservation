@@ -43,24 +43,20 @@
                     <label class="form-rating__label" for="star1"><i class="fa-solid fa-star"></i></label>
                     <label class="rating">評価:</label>
                 </div>
-                @if ($errors->any())
                 <div class="error__item">
-                @foreach ($errors->all() as $error)
-                    <span class="error__message">{{ $error }}</span>
-                @endforeach
+                @error ('rating')
+                    <span class="error__message">{{ $message }}</span>
+                @enderror
                 </div>
-                @endif
                 <div class="comment_group">
                     <label class="comment">コメント:</label>
                     <textarea class="comment_box" name="comment" rows="5"></textarea>
                 </div>
-                @if ($errors->any())
                 <div class="error__item">
-                @foreach ($errors->all() as $error)
-                    <span class="error__message">{{ $error }}</span>
-                @endforeach
+                @error('comment')
+                    <span class="error__message">{{ $message }}</span>
+                @enderror
                 </div>
-                @endif
                 <button class="review_post" type="submit">レビューを投稿</button>
             </form>
         </div>

@@ -26,8 +26,10 @@ class ReviewController extends Controller
         $user = Auth::user();
         $request->validate([
             'rating' => 'required|integer|between:1,5',
-            'comment' => 'nullable|string|max:200',
-            'shop_id' => 'required|exists:shops,id',
+            'comment' => 'nullable|string|max:100',
+        ], [
+            'rating.required' => '評価を指定してください。',
+            'comment.max' => 'コメントは200文字以内で入力してください。'
         ]);
         $review = Review::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
         if (empty($review)) {
