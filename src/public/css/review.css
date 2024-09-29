@@ -39,7 +39,7 @@ body {
 
 .comment_group {
     font-size: 20px;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 .comment_box {
@@ -83,6 +83,11 @@ body {
 .form-rating__input:checked ~ .form-rating__label {
     /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
     color: gold;
+}
+
+.error__message {
+    color: red;
+    font-size: 15px;
 }
 
 @media screen and (max-width:768px) {
