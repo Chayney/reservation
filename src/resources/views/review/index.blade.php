@@ -26,6 +26,7 @@
             <form action="/review/store" method="post">
                 @csrf
                 <div class="form-rating">
+                    <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
                     <input class="form-rating__input" id="star5" name="rating" type="radio" value="5">
                     <label class="form-rating__label" for="star5"><i class="fa-solid fa-star"></i></label>
 
