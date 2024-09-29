@@ -46,7 +46,7 @@
                 @if ($errors->any())
                 <div class="error__item">
                 @foreach ($errors->all() as $error)
-                <span class="error__message">{{ $error }}</span>
+                    <span class="error__message">{{ $error }}</span>
                 @endforeach
                 </div>
                 @endif
@@ -54,6 +54,13 @@
                     <label class="comment">コメント:</label>
                     <textarea class="comment_box" name="comment" rows="5"></textarea>
                 </div>
+                @if ($errors->any())
+                <div class="error__item">
+                @foreach ($errors->all() as $error)
+                    <span class="error__message">{{ $error }}</span>
+                @endforeach
+                </div>
+                @endif
                 <button class="review_post" type="submit">レビューを投稿</button>
             </form>
         </div>
