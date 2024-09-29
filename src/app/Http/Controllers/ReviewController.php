@@ -16,19 +16,26 @@ class ReviewController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $shop = Shop::with('area', 'genre')->where('id', $request->shop_id)->first();
-        return view('review.index', compact('shop'));
+        $shops = Shop::where('shop', $request->shop)->get();
+
+        return view('review.index', compact('shops'));
     }
 
     public function store(Request $request)
     {
         $user = Auth::user();
-        Review::create([
-            'user_id' => $user->id,
-            'restaurant_id' => $request->restaurant_id,
-            'rating' => $request->rating,
-            'comment' => $request->comment,
-        ]);
+        $shop_id = $request->shop_id;
+        $review = Review::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
+        if (empty($review)) {
+            Review::create([
+                'user_id' => $user->id,
+                'shop_id' => $request->shop_id,
+                'rating' => $request->rating,
+                'comment' => $request->comment
+            ]);
+
+            return view('review.thanks');
+        }
 
         return redirect()->back()->with('success', 'レビューが投稿されました！');
     }

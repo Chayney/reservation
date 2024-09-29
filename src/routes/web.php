@@ -41,5 +41,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // 店舗のレビュー
     Route::get('/review/{shop_id}', [ReviewController::class, 'index']);
-    
+    Route::post('/review/store', [ReviewController::class, 'store']);
 });
