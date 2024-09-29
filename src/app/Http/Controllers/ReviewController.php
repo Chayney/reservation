@@ -24,7 +24,11 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $shop_id = $request->shop_id;
+        $request->validate([
+            'rating' => 'required|integer|between:1,5',
+            'comment' => 'nullable|string|max:200',
+            'shop_id' => 'required|exists:shops,id',
+        ]);
         $review = Review::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
         if (empty($review)) {
             Review::create([

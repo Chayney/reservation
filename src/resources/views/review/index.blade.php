@@ -43,6 +43,13 @@
                     <label class="form-rating__label" for="star1"><i class="fa-solid fa-star"></i></label>
                     <label class="rating">評価:</label>
                 </div>
+                @if ($errors->any())
+                <div class="error__item">
+                @foreach ($errors->all() as $error)
+                <span class="error__message">{{ $error }}</span>
+                @endforeach
+                </div>
+                @endif
                 <div class="comment_group">
                     <label class="comment">コメント:</label>
                     <textarea class="comment_box" name="comment" rows="5"></textarea>
