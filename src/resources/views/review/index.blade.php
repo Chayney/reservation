@@ -8,7 +8,7 @@
 @section('content')
     <div class="parent__container">
         <div class="child__container-left">
-            <div class="title_wrap">
+            <div class="left_content">
                 <div class="shop_content">
                     <img class="shop_image" src="{{ $shop['shop_image'] }}"><br><br>
                     <span class="shop_title">{{ $shop['shop'] }}</span><br><br>
