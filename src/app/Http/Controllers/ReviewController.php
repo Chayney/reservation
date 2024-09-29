@@ -31,6 +31,7 @@ class ReviewController extends Controller
             'rating.required' => '評価を指定してください。',
             'comment.max' => 'コメントは200文字以内で入力してください。'
         ]);
+        $shop_id = $request->shop_id;
         $review = Review::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
         if (empty($review)) {
             Review::create([
