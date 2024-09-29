@@ -37,6 +37,6 @@ class ReviewController extends Controller
             return view('review.thanks');
         }
 
-        return redirect()->back()->with('success', 'レビューが投稿されました！');
+        return redirect()->back();
     }
 }
