@@ -26,6 +26,9 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/search', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
+// レビュー一覧
+Route::get('/review/list/{shop_id}', [ReviewController::class, 'show']);
+
 Route::middleware(['auth', 'verified'])->group(function () {
     // マイページ、店舗予約、予約変更
     Route::get('/mypage', [ReservationController::class, 'index']);
