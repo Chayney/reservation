@@ -49,6 +49,15 @@
           <span class="genre">#{{ $shop['genre']['name'] }}</span><br><br>
           <span class="shop_detail">{{ $shop['shop_detail'] }}</span>
         @endforeach
+        @if (Auth::check())
+        <form action="/review/{{ $shop['id'] }}" method="get">
+          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">レビューを投稿する</button>
+        </form>
+        @else
+        <form action="/review/list/{{ $shop['id'] }}" method="get">
+          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">レビューをみる</button>
+        </form>
+        @endif
       </div>
     </div>
 
