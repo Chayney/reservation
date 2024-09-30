@@ -46,4 +46,12 @@ class ReviewController extends Controller
 
         return redirect()->back();
     }
+
+    public function show(Request $request)
+    {
+        $shops = Shop::where('shop', $request->shop)->get();
+        $lists = Review::where('shop_id', $request->shop_id)->get();
+
+        return view('review.list', compact('shops', 'lists'));
+    }
 }
