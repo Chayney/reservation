@@ -50,7 +50,10 @@
                 </div>
                 <div class="comment_group">
                     <label class="comment">コメント:</label>
-                    <textarea class="comment_box" name="comment" rows="5"></textarea>
+                    <textarea id="textarea" class="comment_box" name="comment" rows="5"></textarea>   
+                </div>
+                <div class="text_count">
+                    <p>文字数: <span id="charCount">0</span>/300</p>
                 </div>
                 <div class="error__item">
                 @error('comment')
@@ -62,3 +65,22 @@
         </div>
     </div>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const textarea = document.getElementById('textarea');
+        const charCount = document.getElementById('charCount');
+        const maxLength = 300;
+
+        textarea.addEventListener('input', function () {
+            const currentLength = textarea.value.length;
+            charCount.textContent = currentLength;
+
+            if (currentLength > maxLength) {
+                charCount.classList.add('over-limit');
+            } else {
+                charCount.classList.remove('over-limit');
+            }
+        });
+    });
+</script>

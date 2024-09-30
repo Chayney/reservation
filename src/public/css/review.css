@@ -4,7 +4,6 @@ body {
     letter-spacing: .05em;
     color: black;
     background-color: #f2f2f2;
-    overflow: hidden;
 }
 
 .parent__container {
@@ -90,6 +89,15 @@ body {
     font-size: 15px;
 }
 
+.over-limit {
+    color: red;
+}
+
+.text_count {
+    width: 90%;
+    text-align: right;
+}
+
 @media screen and (max-width:768px) {
     .parent__container {
         width: 100%;
@@ -98,9 +106,17 @@ body {
 
     .child__container-left {
         width: 90%;
+        margin: 10% auto;
+    }
+
+    .child__container-right {
+        width: 90%;
+        margin: 5% auto;
     }
 }
 
-@media screen and (max-width:550px) {
-
+@media screen and (max-width:500px) {
+    .title_text {
+        font-size: 20px;
+    }
 }
