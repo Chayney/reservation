@@ -26,7 +26,7 @@ class ReviewController extends Controller
         $user = Auth::user();
         $request->validate([
             'rating' => 'required|integer|between:1,5',
-            'comment' => 'nullable|string|max:100',
+            'comment' => 'nullable|string|max:300',
         ], [
             'rating.required' => '評価を指定してください。',
             'comment.max' => 'コメントは200文字以内で入力してください。'
