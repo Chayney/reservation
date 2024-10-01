@@ -29,7 +29,7 @@ class ReviewController extends Controller
             'comment' => 'nullable|string|max:300',
         ], [
             'rating.required' => '評価を指定してください。',
-            'comment.max' => 'コメントは200文字以内で入力してください。'
+            'comment.max' => 'コメントは300文字以内で入力してください。'
         ]);
         $shop_id = $request->shop_id;
         $review = Review::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
