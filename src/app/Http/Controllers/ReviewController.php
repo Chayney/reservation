@@ -51,7 +51,7 @@ class ReviewController extends Controller
     {
         $shops = Shop::where('shop', $request->shop)->get();
         $lists = Review::with('reviewUser')->where('shop_id', $request->shop_id)->get();
-        dd($lists);
+        
         return view('review.list', compact('shops', 'lists'));
     }
 }
