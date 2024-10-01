@@ -24,7 +24,7 @@
             @foreach ($lists as $list)
                 <div class="review_content">
                     <div class="review-user">
-                        <span>{{ $list['reviewUser']['name'] }}さん</span><br><br>
+                        <span>{{ $list['reviewUser']['name'] }}さん</span>
                         <span>{{ $list['updated_at'] }}</span>
                     </div>
                     <span class="star-rating" data-rate="{{ $list['rating'] }}"></span>
