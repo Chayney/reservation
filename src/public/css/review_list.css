@@ -53,7 +53,7 @@ body {
     top: 30px;
     left: 30px;
     width: 30%;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .star-rating {
@@ -93,23 +93,44 @@ body {
 
 @media screen and (max-width:768px) {
     .parent__container {
-        width: 100%;
+        width: 90%;
         flex-wrap: wrap;
     }
 
-    .child__container-left {
-        width: 90%;
-        margin: 10% auto;
+    .child__container-above {
+        display: block;
+        width: 95%;
+        margin: 25% auto 10% auto;
     }
 
-    .child__container-right {
+    .shop_image {
+        width: 95%;
+        height: 250px;
+    }
+
+    .shop_content {
+        margin: initial;
+    }
+
+    .child__container-below {
+        width: 95%;
+    }
+
+    .review_content {
         width: 90%;
-        margin: 5% auto;
+    }
+
+    .review-user {
+        display: flex;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 60%;
     }
 }
 
-@media screen and (max-width:500px) {
-    .title_text {
-        font-size: 20px;
+@media screen and (max-width:550px) {
+    .review-user {
+        width: 85%;
     }
 }
