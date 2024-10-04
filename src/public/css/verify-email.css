@@ -1,0 +1,42 @@
+.body__wrap {
+    margin: 10%;
+    text-align: center;
+}
+
+.body__text {
+    margin: 5%;
+}
+
+.form__input-button {
+    border-style: none;
+    background-color: rgb(53,96,246);
+    height: 50px;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    padding: 15px;
+}
+
+.back__button {
+    display: block;
+    margin-top: 10%;
+    color: rgb(38, 81, 207);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+@media screen and (max-width:768px) {
+    .header {
+        margin-left: -7%;
+    }
+
+    .center__container {
+        width: 60%;
+        margin: 20% auto;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .center__container {
+        margin: 30% auto;
+    }
+}

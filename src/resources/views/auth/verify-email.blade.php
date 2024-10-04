@@ -1,28 +1,35 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/verify-email.css') }}">
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
-            </div>
+    <div class="header__wrap">
+        <div class="header__text">
+            {{ __('メールアドレスをご確認ください。') }}
         </div>
     </div>
-</div>
+    <div class="body__wrap">
+        @if (session('resent'))
+            <div class="alert-success" role="alert">
+                {{ __('ご登録いただいたメールアドレスに確認用のリンクをお送りしました。') }}
+            </div>
+        @endif
+
+        <p class="body__text">
+            {{ __('メールをご確認ください。') }}
+        </p>
+        <p class="body__text">
+            {{ __('もし確認用メールが送信されていない場合は、下記をクリックしてください。') }}
+        </p>
+        <form class="form__item" method="POST" action="{{ route('verification.send') }}">
+            @csrf
+            <button type="submit" class="form__input-button">
+                {{ __('確認メールを再送信する') }}
+            </button>
+        </form>
+
+        <a class="back__button" href="/">戻る</a>
+    </div>
 @endsection

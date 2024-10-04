@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use App\Http\Responses\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use Laravel\Fortify\Contracts\VerifyEmailViewResponse;
+use Laravel\Fortify\Http\Controllers\EmailVerificationController;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -51,6 +53,15 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        $this->app->singleton(VerifyEmailViewResponse::class, function ($app) {
+            return new class implements VerifyEmailViewResponse {
+                public function toResponse($request)
+                {
+                    return view('auth.verify-email');
+                }
+            };
         });
     }
 }
