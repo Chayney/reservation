@@ -41,9 +41,8 @@ Laravel学習のまとめとして作成いたしました。提示された要�
 ![スクリーンショット_5-10-2024_151714_docs google com](https://github.com/user-attachments/assets/d55f6a2f-994e-45c9-9d2f-9cbf1a92ccd2)
 ![スクリーンショット_5-10-2024_15196_docs google com](https://github.com/user-attachments/assets/35fcd064-7924-49b1-9213-f236296413f2)
 
-
 ## ER図
-
+![スクリーンショット_5-10-2024_152120_docs google com](https://github.com/user-attachments/assets/1ef55ca3-a02d-4abe-a698-092936011158)
 
 ## 環境構築
 
