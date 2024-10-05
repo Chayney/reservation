@@ -20,7 +20,7 @@
           <nav class="nav_content">
             <ul class="nav_list">
               <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
-              @if (Auth::check())
+              @if (Auth::check() && Auth::user()->hasVerifiedEmail())
               <li class="nav_item">
                 <form action="/logout" method="post">
                   @csrf
@@ -49,7 +49,7 @@
           <span class="genre">#{{ $shop['genre']['name'] }}</span><br><br>
           <span class="shop_detail">{{ $shop['shop_detail'] }}</span>
         @endforeach
-        @if (Auth::check())
+        @if (Auth::check() && Auth::user()->hasVerifiedEmail())
         <form action="/review/{{ $shop['id'] }}" method="get">
           <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">レビューを投稿する</button>
         </form>

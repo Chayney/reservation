@@ -17,7 +17,7 @@
     <nav class="nav_content">
       <ul class="nav_list">
         <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
-        @if (Auth::check())
+        @if (Auth::check() && Auth::user()->hasVerifiedEmail())
         <li class="nav_item">
           <form action="/logout" method="post">
             @csrf
@@ -43,7 +43,7 @@
         <button class="tab-button" data-target="tab1">予約状況</button>
         <button class="tab-button" data-target="tab2">お気に入り店舗</button>
       </div>
-      @if (Auth::check())
+      @if (Auth::check() && Auth::user()->hasVerifiedEmail())
         <h1 class="login_user">{{ Auth::user()['name'] }}さん</h1>
       @endif
       <div class="tab-content">

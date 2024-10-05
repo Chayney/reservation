@@ -17,7 +17,7 @@
     <nav class="nav_content">
         <ul class="nav_list">
             <li class="nav_item"><a href="/">Home</a></li>
-            @if (Auth::check())
+            @if (Auth::check() && Auth::user()->hasVerifiedEmail())
               <li class="nav_item">
                 <form action="/logout" method="post">
                   @csrf
@@ -78,7 +78,7 @@
           <form action="/detail/{{ $shop['id'] }}" method="get">
             <button class="detail" type="submit" name="shop" value="{{ $shop['shop'] }}">詳しくみる</button>
           </form>
-          @if (Auth::check())
+          @if (Auth::check() && Auth::user()->hasVerifiedEmail())
             @if ($shop->favoriteMarked())
             <form action="/favorite/destroy{shop}" method="post">
               @csrf

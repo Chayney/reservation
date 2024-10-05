@@ -20,7 +20,7 @@
           <nav class="nav_content">
             <ul class="nav_list">
               <li class="nav_item"><a href="{{ url('/') }}">Home</a></li>
-              @if (Auth::check())
+              @if (Auth::check() && Auth::user()->hasVerifiedEmail())
               <li class="nav_item">
                 <form action="/logout" method="post">
                   @csrf
