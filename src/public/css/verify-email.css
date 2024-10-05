@@ -18,10 +18,11 @@
 
 .back__button {
     display: block;
-    margin-top: 10%;
+    margin: 10% auto;
     color: rgb(38, 81, 207);
     font-size: 20px;
     text-decoration: none;
+    border-style: none;
 }
 
 @media screen and (max-width:768px) {
