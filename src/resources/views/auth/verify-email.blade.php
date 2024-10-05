@@ -5,18 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="header__wrap">
-        <div class="header__text">
-            {{ __('メールアドレスをご確認ください。') }}
-        </div>
-    </div>
     <div class="body__wrap">
-        @if (session('resent'))
-            <div class="alert-success" role="alert">
-                {{ __('ご登録いただいたメールアドレスに確認用のリンクをお送りしました。') }}
-            </div>
-        @endif
-
         <p class="body__text">
             {{ __('メールをご確認ください。') }}
         </p>
