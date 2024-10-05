@@ -7,10 +7,10 @@
 @section('content')
     <div class="body__wrap">
         <p class="body__text">
-            {{ __('メールをご確認ください。') }}
+            {{ __('メールをご確認ください') }}
         </p>
         <p class="body__text">
-            {{ __('もし確認用メールが送信されていない場合は、下記をクリックしてください。') }}
+            {{ __('もし確認用メールが送信されていない場合は、下記をクリックしてください') }}
         </p>
         <form class="form__item" method="POST" action="{{ route('verification.send') }}">
             @csrf
@@ -18,7 +18,9 @@
                 {{ __('確認メールを再送信する') }}
             </button>
         </form>
-
-        <a class="back__button" href="/">戻る</a>
+        <form action="/logout" method="post">
+            @csrf
+            <button class="back__button">戻る</button>
+        </form>
     </div>
 @endsection
