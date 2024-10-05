@@ -48,6 +48,9 @@ class ReservationController extends Controller
             ]);
     
             return view('done');
+        } else {
+            $message = '既に予約があります\nマイページから予約の変更を行ってください';
+            return redirect()->back()->with('alert', nl2br(e($message)));
         }
     }
 

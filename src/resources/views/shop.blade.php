@@ -63,6 +63,13 @@
     </div>
 
     <div class="child__container-right">
+    @if(session('alert'))
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            alert("{!! session('alert') !!}");
+          });
+        </script>
+    @endif
       <div class="right-content">
         <h1>予約</h1>
         <form action="/done" method="post">
