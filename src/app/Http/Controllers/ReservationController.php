@@ -86,4 +86,12 @@ class ReservationController extends Controller
 
         return redirect()->back();
     }
+
+    public function confirm(Request $request)
+    {
+        $reservation = Reservation::find($request->id);
+        $reservation->save();
+
+        return redirect('/reservation/confirm');
+    }
 }

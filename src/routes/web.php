@@ -46,3 +46,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/review/{shop_id}', [ReviewController::class, 'index']);
     Route::post('/review/store', [ReviewController::class, 'store']);
 });
+
+Route::get('/reservation/confirm', [ReservationController::class, 'confirm'])->middleware('signed')->name('reservation.confirm');
