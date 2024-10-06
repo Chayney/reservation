@@ -22,6 +22,11 @@
         </div>
        
         <div class="child__container-right">
+        @if (session('alert'))
+            <script>
+                alert('{{ session('alert') }}');
+            </script>
+        @endif
             <h2 class="title_text">今回のご利用はいかがでしたか？</h2>
             <form action="/review/store" method="post">
                 @csrf

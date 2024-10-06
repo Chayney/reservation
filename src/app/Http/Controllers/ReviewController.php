@@ -42,9 +42,9 @@ class ReviewController extends Controller
             ]);
 
             return view('review.thanks');
+        } else {
+            return redirect()->back()->with('alert', '既に投稿したレビューがあります');
         }
-
-        return redirect()->back();
     }
 
     public function show(Request $request)
