@@ -47,4 +47,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/review/store', [ReviewController::class, 'store']);
 });
 
+// QRコードを表示するための名前付きルート
 Route::get('/reservation/confirm', [ReservationController::class, 'confirm'])->middleware('signed')->name('reservation.confirm');
