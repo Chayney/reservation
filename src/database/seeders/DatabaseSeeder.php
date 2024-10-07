@@ -16,7 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AreasTableSeeder::class,
             GenresTableSeeder::class,
-            ShopsTableSeeder::class
+            ShopsTableSeeder::class,
+            UsersTableSeeder::class,
+            ReservationsTableSeeder::class,
+            ReviewsTableSeeder::class,
+            FavoritesTableSeeder::class
         ]);
     }
 }
