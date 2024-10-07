@@ -29,7 +29,7 @@ class ReviewFactory extends Factory
             'user_id' => $userId,
             'shop_id' => $shopId,
             'rating' => $this->faker->numberBetween(1, 5),
-            'comment' => $this->faker->text(50),
+            'comment' => $this->faker->realText(50),
         ];
     }
 }
