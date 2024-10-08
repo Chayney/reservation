@@ -192,7 +192,6 @@ class ShopsTableSeeder extends Seeder
             'shop_detail' => '毎日店主自ら市場等に出向き、厳選した魚介類が、お鮨をはじめとした繊細な料理に仕立てられます。また、選りすぐりの種類豊富なドリンクもご用意しております。',
             'shop_image' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg'
         ];
-        DB::table('shops')->insert($param);
-        
+        DB::table('shops')->insert($param);   
     }
 }

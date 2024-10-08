@@ -21,9 +21,7 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('password')
         ];
-
         DB::table('users')->insert($param);
-
         User::factory()->count(9)->create();
     }
 }
