@@ -19,8 +19,7 @@
                 @endforeach
                 </div>
             </div>
-        </div>
-       
+        </div>     
         <div class="child__container-right">
         @if (session('alert'))
             <script>
