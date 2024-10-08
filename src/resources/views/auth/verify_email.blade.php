@@ -12,7 +12,7 @@
         <p class="body__text">
             {{ __('もし確認用メールが送信されていない場合は、下記をクリックしてください') }}
         </p>
-        <form class="form__item" method="POST" action="{{ route('verification.send') }}">
+        <form class="form__item" method="post" action="{{ route('verification.send') }}">
             @csrf
             <button type="submit" class="form__input-button">
                 {{ __('確認メールを再送信する') }}
