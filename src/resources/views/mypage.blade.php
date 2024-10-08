@@ -36,7 +36,6 @@
     </a>
     </div> 
   </header>
-
   <main>
     <div class="container">
       <div class="tabs">
@@ -118,9 +117,7 @@
       </div>
     </div>    
   <main>
-
   <script src="{{ asset('js/mypage.js') }}" type="text/javascript"></script>
-
 </body>
 
 </html>

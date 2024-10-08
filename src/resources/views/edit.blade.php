@@ -40,7 +40,6 @@
           </a>
         </div>
       </header>
-
       <div class="left-content">
         @foreach ($shops as $shop)
           <a class="home" href="{{ url('mypage') }}">&lt;</a><span class="shop_name"> {{ $shop['shop'] }}</span>
@@ -51,7 +50,6 @@
         @endforeach
       </div>
     </div>
-
     <div class="child__container-right">
       <div class="right-content">
         <h1>予約</h1>
@@ -95,8 +93,7 @@
               <span class="error__message">{{ $message }}</span>
             @enderror
           </div>
-        @endforeach
-          
+        @endforeach          
           <div class="reservation__group">
             <table class="reservation__table">
               <tr>
@@ -124,9 +121,7 @@
       </div>
     </div> 
   </div>
-
   <script src="{{ asset('js/shop.js') }}" type="text/javascript"></script>
-
 </body>
 
 </html>

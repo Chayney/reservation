@@ -17,8 +17,7 @@
                     <span class="shop_detail">{{ $shop['shop_detail'] }}</span>
                 </div>
             @endforeach
-        </div>
-       
+        </div>       
         <div class="child__container-below">
             <h2 class="title_text">お客様のレビュー</h2>
             @foreach ($lists as $list)

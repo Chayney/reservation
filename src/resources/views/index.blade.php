@@ -66,7 +66,6 @@
       </form>
     </ul>
   </header>
-
   <main>
     <div class="parent__container">
       @foreach ($shops as $shop)
@@ -106,7 +105,6 @@
       @endforeach
     </div>
   <main>
-
 </body>
 
 </html>
