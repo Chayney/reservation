@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
 
 class UsersTableSeeder extends Seeder
@@ -15,13 +17,24 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
+        $admin = User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
+        $user = [
             'name' => 'testuser',
             'email' => 'test@example.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password')
         ];
-        DB::table('users')->insert($param);
-        User::factory()->count(9)->create();
+        $adminRole = Role::create(['name' => 'admin']);
+        $userRole = Role::create(['name' => 'user']);
+        Permission::create(['name' => 'edit']);
+        Permission::create(['name' => 'update']);
+        $adminRole->givePermissionTo(['edit', 'update']);
+        $admin->assignRole($adminRole);
+        $user->assignRole($userRole);
     }
 }
