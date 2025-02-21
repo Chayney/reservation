@@ -169,6 +169,10 @@ body {
     position: relative;
 }
 
+.right-content {
+    width: 100%;
+}
+
 .home {
     text-decoration: none;
     color: black;
@@ -217,7 +221,7 @@ body {
     outline: none;
     border: none;
     cursor: pointer;
-    width: 550px;
+    width: 100%;
     margin-top: 2%;
     position: relative;
 }
