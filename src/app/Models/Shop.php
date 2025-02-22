@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class Shop extends Model
 {
@@ -15,7 +16,8 @@ class Shop extends Model
         'area_id',
         'genre_id',
         'shop_detail',
-        'shop_image'
+        'shop_image',
+        'avg_rating'
     ];
 
     public function user()
@@ -55,6 +57,21 @@ class Shop extends Model
         if (!empty($genre)) {
             $query->where('genre_id', $genre);
         }
+    }
+
+    public function scopeHighRating(Builder $query)
+    {
+        return $query->orderByRaw('avg_rating IS NULL, avg_rating DESC');
+    }
+
+    public function scopeLowRating(Builder $query)
+    {
+        return $query->orderByRaw('avg_rating IS NULL, avg_rating ASC');
+    }
+
+    public function scopeRandomOrder(Builder $query)
+    {
+        return $query->inRandomOrder();
     }
 
     public function scopeKeywordSearch($query, $keyword)
