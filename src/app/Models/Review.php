@@ -13,7 +13,8 @@ class Review extends Model
         'user_id', 
         'shop_id', 
         'rating', 
-        'comment'
+        'comment',
+        'image_url'
     ];
 
     public function reviewUser()
