@@ -20,6 +20,7 @@ class CreateShopsTable extends Migration
             $table->string('shop');
             $table->string('shop_detail');
             $table->string('shop_image');
+            $table->decimal('avg_rating',2,1)->default(0);
             $table->timestamps();
         });
     }
