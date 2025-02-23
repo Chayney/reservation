@@ -18,12 +18,24 @@ class ShopController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $favorites = $user->userFavorites()->pluck('shop_id')->toArray();
+            $avgs = Shop::with('area', 'genre')->get();
+            foreach ($avgs as $shop) {
+                $avgRating = $shop->reviews()->avg('rating') ?? 0;
+                $shop->avg_rating = $avgRating;
+                $shop->save();
+            }
             $shops = Shop::with('area', 'genre')->get();
             $areas = Area::all();
             $genres = Genre::all();
 
             return view('index', compact('shops', 'areas', 'genres', 'favorites'));
         } else {
+            $avgs = Shop::with('area', 'genre')->get();
+            foreach ($avgs as $shop) {
+                $avgRating = $shop->reviews()->avg('rating') ?? 0;
+                $shop->avg_rating = $avgRating;
+                $shop->save();
+            }
             $shops = Shop::with('area', 'genre')->get();
             $areas = Area::all();
             $genres = Genre::all();
@@ -35,19 +47,49 @@ class ShopController extends Controller
     public function search(Request $request)
     {
         if (Auth::check()) {
-            $shops = Shop::with('area', 'genre')
+            $shopsQuery = Shop::with('area', 'genre')
                     ->AreaSearch($request->area)
                     ->GenreSearch($request->genre)
-                    ->KeywordSearch($request->keyword)->get();
+                    ->KeywordSearch($request->keyword);
+            $shopsQuery->orderByRaw('avg_rating = 0');
+            if ($request->has('sort')) {
+                switch ($request->input('sort')) {
+                    case 'high_rating':
+                        $shopsQuery = $shopsQuery->HighRating();
+                        break;
+                    case 'low_rating':
+                        $shopsQuery = $shopsQuery->LowRating();
+                        break;
+                    case 'random':
+                        $shopsQuery = $shopsQuery->RandomOrder();
+                        break;
+                }
+            }
+            $shops = $shopsQuery->get();
             $areas = Area::all();
             $genres = Genre::all();
 
             return view('index', compact('shops', 'areas', 'genres'));
         } else {
-            $shops = Shop::with('area', 'genre')
+            $shopsQuery = Shop::with('area', 'genre')
                     ->AreaSearch($request->area)
                     ->GenreSearch($request->genre)
-                    ->KeywordSearch($request->keyword)->get();
+                    ->KeywordSearch($request->keyword);
+            $shopsQuery->orderByRaw('avg_rating = 0');
+            if ($request->has('sort')) {
+                switch ($request->input('sort')) {
+                    case 'high_rating':
+                        $shopsQuery = $shopsQuery->HighRating();
+                        break;
+                    case 'low_rating':
+                        $shopsQuery = $shopsQuery->LowRating();
+                        break;
+                    case 'random':
+                        $shopsQuery = $shopsQuery->RandomOrder();
+                        break;
+                }
+            }
+            $shops = $shopsQuery->get();
             $areas = Area::all();
             $genres = Genre::all();
 
