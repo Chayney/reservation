@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Review;
+use App\Models\Shop;
 
 class ReviewsTableSeeder extends Seeder
 {
@@ -14,6 +15,13 @@ class ReviewsTableSeeder extends Seeder
      */
     public function run()
     {
-        Review::factory()->count(10)->create();
+        $shops = Shop::all();
+        $reviewsToCreate = 10;
+        for ($i = 0; $i < $reviewsToCreate; $i++) {
+            $shop = $shops->random();
+            Review::factory()->create([
+                'shop_id' => $shop->id
+            ]);
+        }
     }
 }

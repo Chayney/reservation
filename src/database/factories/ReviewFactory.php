@@ -18,14 +18,12 @@ class ReviewFactory extends Factory
     public function definition()
     {
         do {
-            $userId = User::inRandomOrder()->first()->id;
+            $userId = User::whereNotIn('id', [1])->inRandomOrder()->first()->id;
             $shopId = Shop::inRandomOrder()->first()->id;
-
             $exists = Review::where('user_id', $userId)
                 ->where('shop_id', $shopId)
                 ->exists();
         } while ($exists);
-
         $faker = app(Faker::class);
         $reviews = [
             '素晴らしいサービスでした！また利用したいです。',
@@ -34,7 +32,6 @@ class ReviewFactory extends Factory
             '少し待ち時間が長かったですが、全体的に満足です。',
             'また来たいと思えるお店でした。'
         ];
-
         return [
             'user_id' => $userId,
             'shop_id' => $shopId,
