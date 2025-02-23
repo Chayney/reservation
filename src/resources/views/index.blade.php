@@ -32,10 +32,21 @@
         </ul>
     </nav>
     <a class="header__logo" href="/">
-    Rese
+      Rese
     </a>
     </div>
     <ul class="nav-list">
+      <form class="search-sort" action="/search" method="get">
+        <label class="sort-label">並べ替え:</label>
+        <li class="nav-item-sort">
+          <select class="select_form_sort" onchange="submit(this.form)" name="sort">
+            <option value="random" {{ request('sort') == 'random' ? 'selected' : '' }}>ランダム</option>
+            <option value="high_rating" {{ request('sort') == 'high_rating' ? 'selected' : '' }}>評価が高い順</option>
+            <option value="low_rating" {{ request('sort') == 'low_rating' ? 'selected' : '' }}>評価が低い順</option>
+          </select>
+          <label></label>
+        </li>
+      </form>
       <form class="search-list" action="/search" method="get">
         <li class="nav-item">
           <label class="select_box">
@@ -71,7 +82,11 @@
       @foreach ($shops as $shop)
         <div class="child__container">
           <img class="shop_image" src="{{ $shop['shop_image'] }}">
-          <span class="shop">{{ $shop['shop'] }}</span>
+          <div class="shop">
+            <span class="shop_name">{{ $shop['shop'] }}</span>
+            <img class="star" src="{{ asset('image/yellow_star.jpg') }}">
+            <span class="score">{{ $shop['avg_rating'] == 0 ? '投稿無し' : $shop['avg_rating'] }}</span>
+          </div>
           <span class="area">#{{ $shop['area']['name'] }}</span>
           <span class="genre">#{{ $shop['genre']['name'] }}</span>
           <form action="/detail/{{ $shop['id'] }}" method="get">

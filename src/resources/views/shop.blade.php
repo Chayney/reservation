@@ -50,12 +50,16 @@
         @endforeach
         @if (Auth::check() && Auth::user()->hasVerifiedEmail())
         <form action="/review/{{ $shop['id'] }}" method="get">
-          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">レビューを投稿する</button>
+          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">口コミを投稿する</button>
+        </form>
+        <form action="/review/list/{{ $shop['id'] }}" method="get">
+          <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
+          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">全ての口コミ情報</button>
         </form>
         @else
         <form action="/review/list/{{ $shop['id'] }}" method="get">
           <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
-          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">レビューをみる</button>
+          <button class="review" type="submit" name="shop" value="{{ $shop['shop'] }}">全ての口コミ情報</button>
         </form>
         @endif
       </div>
