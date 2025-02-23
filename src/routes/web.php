@@ -45,6 +45,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // 店舗のレビュー
     Route::get('/review/{shop_id}', [ReviewController::class, 'index']);
     Route::post('/review/store', [ReviewController::class, 'store']);
+    Route::patch('/review/update', [ReviewController::class, 'update']);
+    Route::delete('/review/destroy', [ReviewController::class, 'destroy']);
 });
 
 // QRコードを表示するための名前付きルート
