@@ -51,19 +51,20 @@ class ShopController extends Controller
                     ->AreaSearch($request->area)
                     ->GenreSearch($request->genre)
                     ->KeywordSearch($request->keyword);
-            $shopsQuery->orderByRaw('avg_rating = 0');
             if ($request->has('sort')) {
                 switch ($request->input('sort')) {
                     case 'high_rating':
                         $shopsQuery = $shopsQuery->HighRating();
                         break;
                     case 'low_rating':
-                        $shopsQuery = $shopsQuery->LowRating();
+                        $shopsQuery = $shopsQuery->orderByRaw('avg_rating = 0, avg_rating ASC');
                         break;
                     case 'random':
                         $shopsQuery = $shopsQuery->RandomOrder();
                         break;
                 }
+            } else {
+                $shopsQuery->orderByRaw('avg_rating = 0');
             }
             $shops = $shopsQuery->get();
             $areas = Area::all();
