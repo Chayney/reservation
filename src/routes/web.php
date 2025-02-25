@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/review/store', [ReviewController::class, 'store']);
     Route::patch('/review/update', [ReviewController::class, 'update']);
     Route::delete('/review/destroy', [ReviewController::class, 'destroy']);
+});
+
+// 管理者専用ルート
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    // 管理者マイページ
+    Route::get('/admin', [AdminController::class, 'index']);
+
+    // 口コミ一覧ページ、口コミ削除処理
+    Route::get('/admin/review', [AdminController::class, 'show']);
+    Route::delete('admin/review/destroy', [AdminController::class, 'destroy']);
+
+    // csvインポートページ、csvインポート処理
+    Route::get('/admin/import', [AdminController::class, 'edit']);
+    Route::post('/admin/import/csv', [AdminController::class, 'import']);
 });
 
 // QRコードを表示するための名前付きルート
