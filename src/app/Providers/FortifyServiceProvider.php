@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use App\Http\Responses\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use App\Actions\Fortify\LoginResponse;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Contracts\VerifyEmailViewResponse;
 use Laravel\Fortify\Http\Controllers\EmailVerificationController;
 
@@ -41,8 +43,14 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.register');
         });
 
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
+
         Fortify::loginView(function () {
-            return view('auth.login');
+            if (request()->is('admin/*')) {
+                return view('admin.login');
+            } else {
+                return view('auth.login');
+            }
         });
 
         RateLimiter::for('login', function (Request $request) {
