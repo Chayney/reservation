@@ -46,13 +46,9 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
 
         Fortify::loginView(function () {
-            if (request()->is('admin/*')) {
-                return view('admin.login');
-            } else {
-                return view('auth.login');
-            }
+            return view('auth.login');
         });
-
+        
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
