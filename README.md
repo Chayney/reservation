@@ -70,7 +70,7 @@ Laravel学習のまとめとして作成いたしました。提示された要�
 ![Image](https://github.com/user-attachments/assets/3b418d35-58ab-410c-bb82-9eed89c71ec0)
 
 ## ER図
-![スクリーンショット_5-10-2024_152120_docs google com](https://github.com/user-attachments/assets/1ef55ca3-a02d-4abe-a698-092936011158)
+![Image](https://github.com/user-attachments/assets/d4bcd6f9-746f-46cf-9a0c-895f94223efd)
 
 ## 環境構築
 
