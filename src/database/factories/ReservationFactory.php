@@ -19,7 +19,7 @@ class ReservationFactory extends Factory
         $randomDate = Carbon::now()->subWeek(2)->addDays(rand(0, 16))->toDateString();
 
         return [
-            'user_id' => 1,
+            'user_id' => 2,
             'shop_id' => function () {
                 return Shop::inRandomOrder()->first()->id;
             },
