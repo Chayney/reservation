@@ -44,6 +44,7 @@ Laravel学習のまとめとして作成いたしました。提示された要�
 
 ## 機能に関する注意点
 ・店舗予約及び予約変更とお気に入りの追加及び削除はメール認証による本登録が完了したユーザーがログインされている状態で使用できる機能となります。ログインしていない場合はログイン画面に遷移されます。   
+・メール認証にはMailtrapを使用しています。Mailtrapをお持ちでない方はアカウント登録してからご利用ください。  
 ・新規会員登録後の送信されるメールに記載されたリンク先が本登録完了ユーザーのログイン画面になっておりますのでそのログイン画面からログインを行ってください。メール認証せずログインを行うと「メールをご確認ください」というページに遷移しますので、「確認メールを再送信する」ボタンを押し送信されるメールより必ず本登録を完了させてください。  
 ・店舗の予約は翌日以降から可能です。当日予約はお電話にてお問い合わせください。  
 ・お気に入りした店舗はマイページ内に掲載されますが、お気に入りを削除するとマイページから消えるため、再度飲食店一覧ページよりお気に入りの追加を行ってください。  
@@ -62,11 +63,14 @@ Laravel学習のまとめとして作成いたしました。提示された要�
 
 ## テーブル設計
 ![スクリーンショット_5-10-2024_15932_docs google com](https://github.com/user-attachments/assets/01ec6b9e-fae2-442e-9cd6-e148eca26da2)
-![スクリーンショット_5-10-2024_151714_docs google com](https://github.com/user-attachments/assets/d55f6a2f-994e-45c9-9d2f-9cbf1a92ccd2)
-![スクリーンショット_5-10-2024_15196_docs google com](https://github.com/user-attachments/assets/35fcd064-7924-49b1-9213-f236296413f2)
+![スクリーンショット_5-10-2024_151714_docs google com](https://github.com/user-attachments/assets/d55f6a2f-994e-45c9-9d2f-9cbf1a92ccd2)  
+![Image](https://github.com/user-attachments/assets/f9ae2a39-4db0-43d9-b002-d4879e49f664)  
+![Image](https://github.com/user-attachments/assets/5be43ce1-e51b-476c-9c94-1f0e1e1d3db6)  
+![Image](https://github.com/user-attachments/assets/e7de2688-2bba-4c46-9e5d-ffd3f1677def)  
+![Image](https://github.com/user-attachments/assets/3b418d35-58ab-410c-bb82-9eed89c71ec0)
 
 ## ER図
-![スクリーンショット_5-10-2024_152120_docs google com](https://github.com/user-attachments/assets/1ef55ca3-a02d-4abe-a698-092936011158)
+![Image](https://github.com/user-attachments/assets/d4bcd6f9-746f-46cf-9a0c-895f94223efd)
 
 ## 環境構築
 
