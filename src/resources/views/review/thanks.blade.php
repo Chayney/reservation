@@ -7,7 +7,7 @@
 @section('content')
   <div class="contact-form__content">
     <div class="center__container">
-      <h2>レビューを投稿しました<br>ありがとうございました</h2>
+      <h2>口コミを投稿しました<br>ありがとうございました</h2>
       <a href="{{ url('/') }}">戻る</a>
     </div>
   </div>

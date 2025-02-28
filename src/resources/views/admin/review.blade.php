@@ -7,13 +7,7 @@
 @section('content')
   <!-- PC版レイアウト -->
   <div class="admin">
-    <div class="admin__inner">
-      <form class="search" action="/admin/comment/search" method="get" onsubmit="return removeEmptyFields(this)">
-        <input class="search-form__keyword-input" type="text" name="freeword" placeholder="ユーザー名や口コミを入力してください">
-        <div class="search-form__actions">
-          <input class="search-form__search-btn" type="submit" value="検索">
-        </div>
-      </form>  
+    <div class="admin__inner">  
       <table class="admin__table">
         <tr class="admin__row">
           <th class="admin__label_id">番号</th>
@@ -27,7 +21,7 @@
             <td class="admin__label_name">{{ $review['reviewUser']['name'] }}</td>
             <td class="admin__label_comment">{{ $review['comment'] }}</td>
             <td class="admin__label_delete">
-              <form action="/admin/comment/destroy" class="trash-group" method="post">
+              <form action="/admin/review/destroy" class="trash-group" method="post">
                 @csrf
                 @method('DELETE')
                 <input type="hidden" name="id" value="{{ $review['id'] }}">
@@ -43,13 +37,6 @@
 
     <!-- スマホ版レイアウト -->
     <div class="parent__card">
-      <form class="search-mobile" action="/admin/comment/search" method="get">
-        @csrf
-        <input class="search-keyword-input-mobile" type="text" name="freeword" placeholder="ユーザー名や口コミを入力してください">
-        <div class="search-actions-mobile">
-          <input class="search-search-btn-mobile" type="submit" value="検索">
-        </div>
-      </form>
       @foreach ($reviews as $review)
         <div class="card">
           <table class="user__table">
@@ -57,7 +44,7 @@
               <th class="table__header">番号</th>
               <td class="table__item">{{ $review['id'] }}</td>
               <td class="table__item_delete">
-                <form action="/admin/comment/destroy" class="trash-group" method="post">
+                <form action="/admin/review/destroy" class="trash-group" method="post">
                   @csrf
                   @method('DELETE')
                   <input type="hidden" name="id" value="{{ $review['id'] }}">

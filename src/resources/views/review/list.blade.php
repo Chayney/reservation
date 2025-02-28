@@ -31,7 +31,7 @@
                                 @csrf
                                 @method('DELETE')                         
                                 <input type="hidden" name="id" value="{{ $list['id'] }}">
-                                <button class="review_delete" type="submit" onclick="return showAlert('本当にお気に入りを削除しますか？')">口コミを削除する</button>
+                                <button class="review_delete" type="submit" onclick="return showAlert('本当に口コミを削除しますか？')">口コミを削除する</button>
                             </form>
                         </div>
                     @else

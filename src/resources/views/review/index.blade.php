@@ -90,17 +90,30 @@
                         @error('comment')
                             <span class="error__message">{{ $message }}</span>
                         @enderror
-                    </div>          
-                    <label class="image-label">画像の追加</label>
-                    <div class="form__input--image">
-                        <label id="uploadButton" class="item_image"><input type="file" id="upload" onchange="previewImage(event)" class="file" name="image_url"><img class="edit" src="{{ $list['image_url'] ? asset('/storage/' . $list['image_url']) : '' }}"></label>
-                        <img id="uploadedImage" src="">
                     </div>
-                    <div class="error__item">
-                        @error ('image_url')
-                            <span class="error__message">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    @if (empty($list->image_url))          
+                        <label class="image-label">画像の追加</label>
+                        <div class="form__input--image">
+                            <label id="uploadButton" class="edit">クリックして画像を追加<br>またはドラッグアンドドロップ<input type="file" id="upload" onchange="previewImage(event)" class="file" name="image_url"></label>
+                            <img id="uploadedImage" src="">
+                        </div>
+                        <div class="error__item">
+                            @error ('image_url')
+                                <span class="error__message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @else
+                        <label class="image-label">画像の追加</label>
+                        <div class="form__input--image">
+                            <label id="uploadButton" class="item_image"><input type="file" id="upload" onchange="previewImage(event)" class="file" name="image_url"><img class="edit" src="{{ $list['image_url'] ? asset('/storage/' . $list['image_url']) : '' }}"></label>
+                            <img id="uploadedImage" src="">
+                        </div>
+                        <div class="error__item">
+                            @error ('image_url')
+                                <span class="error__message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @endif
                     <div class="review-button">
                         <button class="review_post" name="id" value="{{ $list['id'] }}" type="submit">口コミを投稿</button>
                     </div>
@@ -189,19 +202,5 @@
             document.getElementById('uploadButton').style.display = 'none';
         };
         reader.readAsDataURL(event.target.files[0]);
-    }
-    window.onload = function() {
-        var imageElements = document.getElementsByClassName('edit');
-        var assetPath = "{{ asset( '/storage/' ) }}";
-        @foreach ($lists as $list)
-            (function(list) {
-                if (imageElements.length > 0) {
-                    var imageSrc = imageElements[0].src;
-                    if (imageSrc && imageSrc !== assetPath + list['image_url']) {
-                        document.getElementById('uploadButton').style.display = 'none';
-                    }
-                }
-            })({{ json_encode($list) }});
-        @endforeach
     }
 </script>
