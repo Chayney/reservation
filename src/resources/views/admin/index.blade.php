@@ -13,7 +13,7 @@
       <a class="button-submit" href="/admin/review">コメント一覧</a>
     </div>
     <div class="link">
-      <a class="button-submit" href="/admin">お知らせメール作成・送信</a>
+      <a class="button-submit" href="/admin/import">新規店舗追加</a>
     </div>
   </div>
 @endsection
