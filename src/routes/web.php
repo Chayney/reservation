@@ -57,7 +57,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // 口コミ一覧ページ、口コミ削除処理
     Route::get('/admin/review', [AdminController::class, 'show']);
-    Route::delete('admin/review/destroy', [AdminController::class, 'destroy']);
+    Route::delete('/admin/review/destroy', [AdminController::class, 'destroy']);
 
     // csvインポートページ、csvインポート処理
     Route::get('/admin/import', [AdminController::class, 'edit']);
