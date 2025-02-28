@@ -1,0 +1,41 @@
+.admin__content {
+    margin: 13% auto;
+}
+  
+.admin-form__heading {
+    text-align: center;
+}
+
+.link {
+    margin-top: 3%;
+    text-align: center;
+}
+
+.button-submit {
+    text-decoration: none;
+    color: lightskyblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media screen and (max-width:1000px) {
+    .admin__content {
+        margin: 25% auto;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .admin__content {
+        margin: 35% auto;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .admin__content {
+        margin: 40% auto;
+    }
+
+    .admin-form__heading {
+        font-size: 13px;
+    }
+}
