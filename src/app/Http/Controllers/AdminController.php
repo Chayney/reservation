@@ -25,6 +25,14 @@ class AdminController extends Controller
         return view('admin.review', compact('reviews'));
     }
 
+    public function destroy(Request $request)
+    {
+        $user = Auth::user();
+        Review::where('id', $request->id)->delete();
+
+        return redirect()->back()->with('success', '口コミを削除しました');
+    }
+
     public function edit()
     {
         $reviews = Review::with('reviewUser')->paginate(5);
