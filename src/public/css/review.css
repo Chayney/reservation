@@ -266,10 +266,19 @@ body {
     .child__container-right {
         width: 90%;
         margin: 5% auto;
+        text-align: center;
+    }
+
+    .form-rating {
+        justify-content: center;
+    }
+
+    .form__input--image {
+        margin: 0 auto;
     }
 
     .review-button {
-        right: 15%;
+        right: 10%;
     }
 }
 

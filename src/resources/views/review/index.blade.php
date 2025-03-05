@@ -91,10 +91,32 @@
                             <span class="error__message">{{ $message }}</span>
                         @enderror
                     </div>
-                    @if (empty($list->image_url))          
+                    @if (empty($list))          
                         <label class="image-label">画像の追加</label>
                         <div class="form__input--image">
                             <label id="uploadButton" class="edit">クリックして画像を追加<br>またはドラッグアンドドロップ<input type="file" id="upload" onchange="previewImage(event)" class="file" name="image_url"></label>
+                            <img id="uploadedImage" src="">
+                        </div>
+                        <div class="error__item">
+                            @error ('image_url')
+                                <span class="error__message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @elseif (empty($list->image_url))
+                        <label class="image-label">画像の追加</label>
+                        <div class="form__input--image">
+                            <label id="uploadButton" class="edit">クリックして画像を追加<br>またはドラッグアンドドロップ<input type="file" id="upload" onchange="previewImage(event)" class="file" name="image_url"></label>
+                            <img id="uploadedImage" src="">
+                        </div>
+                        <div class="error__item">
+                            @error ('image_url')
+                                <span class="error__message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @elseif (Str::startsWith($list['image_url'], 'image/'))
+                        <label class="image-label">画像の追加</label>
+                        <div class="form__input--image">
+                            <label id="uploadButton" class="item_image"><input type="file" id="upload" onchange="previewImage(event)" class="file" name="image_url"><img class="edit" src="{{ $list['image_url'] ? asset($list['image_url']) : '' }}"></label>
                             <img id="uploadedImage" src="">
                         </div>
                         <div class="error__item">

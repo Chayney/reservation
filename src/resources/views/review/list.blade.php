@@ -42,7 +42,11 @@
                     @endif
                     <span class="star-rating" data-rate="{{ $list['rating'] }}"></span>
                     <span class="comment">{{ $list['comment'] }}</span>
-                    <img class="image" src="{{ asset( '/storage/' . $list['image_url']) }}" alt="">
+                    @if (Str::startsWith($list['image_url'], 'image/'))
+                        <img class="image" src="{{ asset($list['image_url']) }}" alt="">
+                    @else
+                        <img class="image" src="{{ asset( '/storage/' . $list['image_url']) }}" alt="">
+                    @endif
                 </div>
             @endforeach
         </div>
