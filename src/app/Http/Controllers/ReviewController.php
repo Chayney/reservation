@@ -10,6 +10,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
 use App\Models\Review;
+use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -22,19 +23,9 @@ class ReviewController extends Controller
         return view('review.index', compact('shops', 'lists'));
     }
 
-    public function store(Request $request)
+    public function store(ReviewRequest $request)
     {
         $user = Auth::user();
-        $request->validate([
-            'rating' => 'required',
-            'comment' => 'max:400',
-            'image_url' => 'file|mimes:jpeg,png'
-        ], [
-            'rating.required' => '評価を指定してください。',
-            'comment.max' => 'コメントは400文字以内で入力してください。',
-            'image_url.file' => '有効なファイルをアップロードしてください',
-            'image_url.mimes' => 'アップロード可能なファイル形式は、jpeg,png のみです'
-        ]);
         $shop_id = $request->shop_id;
         $review = Review::where('user_id', $user->id)->where('shop_id', $shop_id)->first();
         if (empty($review)) {
@@ -42,15 +33,16 @@ class ReviewController extends Controller
             if ($request->hasFile('image_url')) {
                 $path = \Storage::put('/public', $image);
                 $path = explode('/', $path);
+                $image_url = $path[1];
             } else {
-                $path = null;
+                $image_url = null;
             }
             Review::create([
                 'user_id' => $user->id,
                 'shop_id' => $request->shop_id,
                 'rating' => $request->rating,
                 'comment' => $request->comment,
-                'image_url' => $path[1]
+                'image_url' => $image_url
             ]);
 
             return view('review.thanks');
@@ -67,34 +59,32 @@ class ReviewController extends Controller
         return view('review.list', compact('shops', 'lists'));
     }
 
-    public function update(Request $request)
+    public function update(ReviewRequest $request)
     {
         $user = Auth::user();
-        $request->validate([
-            'rating' => 'required',
-            'comment' => 'max:400',
-            'image_url' => 'file|mimes:jpeg,png'
-        ], [
-            'rating.required' => '評価を指定してください。',
-            'comment.max' => 'コメントは400文字以内で入力してください。',
-            'image_url.file' => '有効なファイルをアップロードしてください',
-            'image_url.mimes' => 'アップロード可能なファイル形式は、jpeg,png のみです'
-        ]);
         $shop_id = $request->shop_id;
         $review = Review::where('id', $request->id)->first();
         $image = $request->file('image_url');
         if ($request->hasFile('image_url')) {
             $path = \Storage::put('/public', $image);
             $path = explode('/', $path);
+            $image_url = $path[1];
         } else {
-            $path = null;
+            $image_url = $review->image_url;
         }
         $review->update([
             'rating' => $request->rating,
-            'comment' => $request->comment,
-            'image_url' => $path[1]
+            'comment' => $request->comment ?? $review->comment,
+            'image_url' => $image_url
         ]);
 
         return redirect()->back()->with('success', '口コミを更新しました');
+    }
+
+    public function destroy(Request $request)
+    {
+        Review::where('id', $request->id)->delete();
+
+        return redirect()->back()->with('success', '口コミを削除しました');
     }
 }
