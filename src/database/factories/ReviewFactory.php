@@ -37,6 +37,7 @@ class ReviewFactory extends Factory
             'shop_id' => $shopId,
             'rating' => $this->faker->numberBetween(1, 5),
             'comment' => $faker->randomElement($reviews),
+            'image_url' => 'image/yakitori.jpeg'
         ];
     }
 }
