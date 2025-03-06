@@ -64,6 +64,7 @@ class ReviewController extends Controller
         $user = Auth::user();
         $shop_id = $request->shop_id;
         $review = Review::where('id', $request->id)->first();
+        $shop = Shop::where('id', $review->shop_id)->first();
         $image = $request->file('image_url');
         if ($request->hasFile('image_url')) {
             $path = \Storage::put('/public', $image);
@@ -78,7 +79,7 @@ class ReviewController extends Controller
             'image_url' => $image_url
         ]);
 
-        return redirect()->back()->with('success', '口コミを更新しました');
+        return redirect("/review/list/{$shop_id}?shop_id={$shop_id}&shop={$shop->shop}")->with('success', '口コミを更新しました');
     }
 
     public function destroy(Request $request)
