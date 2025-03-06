@@ -8,7 +8,7 @@ body {
 
 .parent__container {
     width: 90%;
-    margin: 10% auto;
+    margin: 13% auto;
 }
 
 .child__container-above {
@@ -121,6 +121,10 @@ body {
 }
 
 @media screen and (max-width:1000px) {
+    .parent__container {
+        margin: 20% auto;
+    }
+
     .child__container-below {
         display: block;
         width: 95%;
@@ -139,6 +143,7 @@ body {
 @media screen and (max-width:768px) {
     .parent__container {
         width: 90%;
+        margin: 25% auto;
         flex-wrap: wrap;
     }
 
@@ -172,6 +177,10 @@ body {
 }
 
 @media screen and (max-width:550px) {
+    .parent__container {
+        margin: 35% auto;
+    }
+
     .review-user {
         width: 85%;
     }
@@ -190,6 +199,10 @@ body {
 }
 
 @media screen and (max-width:400px) {
+    .parent__container {
+        margin: 40% auto;
+    }
+
     .star-rating {
         font-size: 1rem;
     }
